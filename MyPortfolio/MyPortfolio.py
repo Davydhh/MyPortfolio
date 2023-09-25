@@ -9,8 +9,8 @@ def index() -> rx.Component:
     return rx.vstack(
         navbar.build(),
         home.build(),
-        align_items="stretch",
-        bg="#F6F8FA"    
+        bg="#F6F8FA",
+        h="100vh"
     )
 
 
