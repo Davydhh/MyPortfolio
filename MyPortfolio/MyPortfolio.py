@@ -1,16 +1,21 @@
 from rxconfig import config
 
 import reflex as rx
-from .components import navbar
-from .pages import home
+from .components import header, footer
+from .pages import content
 from .states.state import State
+from .style import style
 
 def index() -> rx.Component:
+    navbar: rx.Hstack = header.Header()
+    body: rx.Vstack = content.Content()
+    footer_ui: rx.Hstack = footer.Footer()
+
     return rx.vstack(
-        navbar.build(),
-        home.build(),
-        bg="#F6F8FA",
-        h="100vh"
+        navbar,
+        body,
+        footer_ui,
+        style=style.get("main")
     )
 
 
