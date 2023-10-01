@@ -22,9 +22,8 @@ style: dict = {
             "0%": {"background_position": "0 0"},
             "100%": {"background_position": "40px 40px"}
         },
-        "animation": {
-            "dots 4s linear infinite alternate-reverse both"
-        }
+        "animation": "dots 4s linear infinite alternate-reverse both"
+        
     },
     "header": {
         "_dark": {"bg": "#141518"},
@@ -62,4 +61,12 @@ style: dict = {
             "0 10rem"
         ]
     }
+}
+
+wave: dict = {
+    "@keyframes wave": {
+        "0%": {"transform": "rotate(25deg)"},
+        "100%": {"transform": "rotate(-15deg)"}
+    },
+    "animation": "wave 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate-reverse both"
 }

@@ -1,5 +1,5 @@
 import reflex as rx
-from MyPortfolio.style import style
+from MyPortfolio.style import style, wave
 
 
 class Content(rx.Vstack):
@@ -17,7 +17,7 @@ class Content(rx.Vstack):
                         "background_clip": "text"
                     },
                 ),
-                rx.heading("👋🏼", size="2xl"),
+                rx.heading("👋🏼", size="2xl", style=wave),
                 spacing="1.75rem"
             )
         ]
