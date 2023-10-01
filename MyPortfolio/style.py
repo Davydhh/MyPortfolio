@@ -1,9 +1,30 @@
 style: dict = {
-    "_dark": {"bg": "1f2028"},
-    "__light": {"bg": "#fafafa"},
-    "main": {   
+    "app": {
+        "_dark": {
+            "bg": "#1f2028",
+        },
+        "_light": {
+            "bg": "#fafafa",
+        }
+    },
+    "main": {
         "width": "100%",
-        "height": "100vh"
+        "height": "100vh",
+        "_dark": {
+            "background": "radial-gradient(circle, rgba(255, 255, 255, 0.09) 1px, transparent 1px)",
+            "background_size": "25px 25px"
+        },
+        "_light": {
+            "background": "radial-gradient(circle, rgba(0, 0, 0, 0.35) 1px, transparent 1px)",
+            "background_size": "25px 25px"
+        },
+        "@keyframes dots": {
+            "0%": {"background_position": "0 0"},
+            "100%": {"background_position": "40px 40px"}
+        },
+        "animation": {
+            "dots 4s linear infinite alternate-reverse both"
+        }
     },
     "header": {
         "_dark": {"bg": "#141518"},
@@ -11,7 +32,7 @@ style: dict = {
         "width": "100%",
         "height": "50px",
         "padding": [
-            "0 1rem", 
+            "0 1rem",
             "0 1rem",
             "0 1rem",
             "0 4em",
@@ -23,7 +44,9 @@ style: dict = {
     "content": {
         "width": "100%",
         "height": "inherit",
-        "padding": "4rem 0rem"
+        "padding": "15rem 0rem",
+        "align_items": "center",
+        "justify_content": "start"
     },
     "footer": {
         "width": "100%",
@@ -32,7 +55,7 @@ style: dict = {
         "_light": {"bg": "#ffffff"},
         "box_shadow": "0px 8px 16px 0px rgba(0,0,0,0.25)",
         "padding": [
-            "0 1rem", 
+            "0 1rem",
             "0 1rem",
             "0 1rem",
             "0 4em",
