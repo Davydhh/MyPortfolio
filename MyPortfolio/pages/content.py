@@ -1,10 +1,25 @@
 import reflex as rx
 from MyPortfolio.style import style, wave
 
+def create_badge(title):
+        return rx.badge(
+            title,
+            variant="solid",
+            padding=[
+                "0.2rem 0.35rem",
+                "0.2rem 0.35rem",
+                "0.2rem 1rem",
+                "0.2rem 1rem",
+                "0.2rem 1rem"
+            ]
+        )
 
 class Content(rx.Vstack):
+    card_titles = ["Software Engineer", "Microservices Developer", "Java Developer"]
+
     def __init__(self):
         super().__init__(style=style.get("content"))
+
         self.children = [
             rx.hstack(
                 rx.heading(
@@ -19,5 +34,17 @@ class Content(rx.Vstack):
                 ),
                 rx.heading("👋🏼", size="2xl", style=wave),
                 spacing="1.75rem"
+            ),
+            rx.tablet_and_desktop(
+                rx.hstack(
+                    rx.foreach(self.card_titles, create_badge),
+                    spacing="1rem"
+                )
+            ),
+            rx.mobile_only(
+                rx.vstack(
+                    rx.foreach(self.card_titles, create_badge),
+                    spacing="1.25rem"
+                )
             )
         ]
