@@ -1,39 +1,6 @@
 import reflex as rx
-from MyPortfolio.style import style, wave
-
-
-def create_badge(title):
-    return rx.badge(
-        title,
-        variant="solid",
-        padding=[
-            "0.15rem 0.35rem",
-            "0.15rem 0.35rem",
-            "0.15rem 1rem",
-            "0.15rem 1rem",
-            "0.15rem 1rem"
-        ]
-    )
-
-
-def create_breadcrumb_item(path: str, title: str, url: str):
-    return rx.breadcrumb_item(
-        rx.hstack(
-            rx.image(
-                src=path,
-                html_width="24px",
-                html_height="24px",
-                _dark={"filter": "brightness(0) invert(1)"},
-            ),
-            rx.breadcrumb_link(
-                title, 
-                href=url,
-                _dark={"color": "rgba(255, 255, 255, 0.7)"},
-                font_size="sm"
-            )
-        )
-    )
-
+from ..style import style, wave
+from ..utilities.utility import create_badge, create_breadcrumb_item
 
 class Content(rx.Vstack):
     card_titles: list = ["Software Engineer", "Microservices Developer", "Java Developer"]
@@ -51,7 +18,7 @@ class Content(rx.Vstack):
                     _dark={
                         "background": "linear-gradient(to right, #e1e1e1, #757575)",
                         "background_clip": "text"
-                    },
+                    }
                 ),
                 rx.heading("👋🏼", size="2xl", style=wave),
                 spacing="1.75rem"
@@ -73,7 +40,7 @@ class Content(rx.Vstack):
                 )
             ),
             rx.breadcrumb(
-                create_breadcrumb_item("/github.png", "GitHub", "#"),
-                create_breadcrumb_item("/linkedin.png", "Linkedin", "#")
+                create_breadcrumb_item("/github.png", "GitHub", "https://github.com/Davydhh"),
+                create_breadcrumb_item("/linkedin.png", "Linkedin", "https://www.linkedin.com/in/davide-cazzetta-3a86a9198")
             )
         ]

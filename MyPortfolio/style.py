@@ -23,7 +23,7 @@ style: dict = {
             "100%": {"background_position": "40px 40px"}
         },
         "animation": "dots 4s linear infinite alternate-reverse both"
-        
+
     },
     "header": {
         "_dark": {"bg": "#141518"},
@@ -39,6 +39,10 @@ style: dict = {
         ],
         "transition": "all 400ms ease",
         "box_shadow": "0px 8px 16px 0px rgba(0,0,0,0.25)",
+    },
+    "header_buttons": {
+        "_dark": {"color": "white"},
+        "_light": {"color": "black"}
     },
     "content": {
         "width": "100%",
