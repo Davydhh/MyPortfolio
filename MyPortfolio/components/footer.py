@@ -7,15 +7,9 @@ class Footer(rx.Hstack):
         super().__init__(style=style.get("footer"))
         self.children = [
             rx.text(
-                "Created with Reflex",
+                "Copyright © 2023 Davide Cazzetta",
+                font_size="xs",
                 _light={"color": "black"},
                 _dark={"color": "white"}
-            ),
-            rx.spacer(),
-            rx.image(
-                src="/github.png",
-                html_height="26px",
-                html_width="26px",
-                filter="brightness(0) invert(1)"
             )
         ]

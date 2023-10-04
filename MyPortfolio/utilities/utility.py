@@ -8,12 +8,14 @@ def create_menu_item(title: str):
         style=style.get("app")
     )
 
+
 def create_header_button(title: str):
     return rx.button(
         title,
         color_scheme="none",
         style=style.get("header_buttons")
     )
+
 
 def create_badge(title):
     return rx.badge(
@@ -27,6 +29,7 @@ def create_badge(title):
             "0.15rem 1rem"
         ]
     )
+
 
 def create_breadcrumb_item(path: str, title: str, url: str):
     return rx.breadcrumb_item(
@@ -43,5 +46,6 @@ def create_breadcrumb_item(path: str, title: str, url: str):
                 _dark={"color": "rgba(255, 255, 255, 0.7)"},
                 font_size="sm"
             )
-        )
+        ),
+        margin_bottom="7rem"
     )

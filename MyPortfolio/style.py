@@ -57,6 +57,7 @@ style: dict = {
         "_dark": {"bg": "#141518"},
         "_light": {"bg": "#ffffff"},
         "box_shadow": "0px 8px 16px 0px rgba(0,0,0,0.25)",
+        "justify_content": "center",
         "padding": [
             "0 1rem",
             "0 1rem",
