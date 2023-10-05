@@ -57,25 +57,28 @@ class Content(rx.Vstack):
                     ),
                     rx.divider(
                         orientation="vertical",
+                        height="2em",
                         border_color="rgba(255, 255, 255, 0.7)",
                         _light={"border_color": "black"}
                     ),
                     rx.hstack(
                         rx.foreach(State.images_paths, create_stach_image),
-                        spacing="2.5rem"
+                        spacing="3rem"
                     ),
-                    spacing="1rem"
+                    spacing="2rem",
+                    margin_top="10rem"
                 )
             ),
             rx.mobile_only(
                 rx.hstack(
                     rx.heading(
-                        "Tech Stack  |",
+                        "Tech Stack",
                         font_size=["1rem", "md", "xl", "xl", "xl"],
                         transition="all 300ms ease"
                     ),
                     rx.divider(
                         orientation="vertical",
+                        height="2em",
                         border_color="rgba(255, 255, 255, 0.7)",
                         _light={"border_color": "black"}
                     ),
@@ -83,7 +86,8 @@ class Content(rx.Vstack):
                         rx.foreach(State.images_paths, create_stach_image),
                         spacing="1.5rem"
                     ),
-                    spacing="1rem"
+                    spacing="1rem",
+                    margin_top="10rem"
                 )
             )
         ]

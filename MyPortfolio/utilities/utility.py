@@ -46,13 +46,12 @@ def create_breadcrumb_item(path: str, title: str, url: str):
                 _dark={"color": "rgba(255, 255, 255, 0.7)"},
                 font_size="sm"
             )
-        ),
-        margin_bottom="7rem"
+        )
     )
 
 def create_stach_image(path: str):
     return rx.image(
         src=path,
-        width=["30px", "36px", "36px", "36px", "36px"],
+        width=["29px", "36px", "36px", "36px", "36px"],
         height="auto"
     )
