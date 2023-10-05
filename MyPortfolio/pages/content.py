@@ -1,6 +1,7 @@
 import reflex as rx
 from ..style import style, wave
-from ..utilities.utility import create_badge, create_breadcrumb_item
+from ..utilities.utility import create_badge, create_breadcrumb_item, create_stach_image
+from ..states.state import State
 
 
 class Content(rx.Vstack):
@@ -47,45 +48,42 @@ class Content(rx.Vstack):
                 create_breadcrumb_item(
                     "/linkedin.png", "Linkedin", "https://www.linkedin.com/in/davide-cazzetta-3a86a9198"),
             ),
-            rx.hstack(
-                rx.heading(
-                    "Tech Stack",
-                    font_size=["1rem", "md", "md", "md", "md"],
-                    transition="all 300ms ease"
-                ),
-                rx.divider(
-                    orientation="vertical",
-                    border_color="rgba(255, 255, 255, 0.7)",
-                    _light={"border_color": "black"}
-                ),
+            rx.tablet_and_desktop(
                 rx.hstack(
-                    rx.image(
-                        src="/java.png",
-                        width=["30px", "36px", "36px", "36px", "36px"],
-                        height="auto"
+                    rx.heading(
+                        "Tech Stack",
+                        font_size=["1rem", "md", "xl", "xl", "xl"],
+                        transition="all 300ms ease"
                     ),
-                    rx.image(
-                        src="/python.png",
-                        width=["30px", "36px", "36px", "36px", "36px"],
-                        height="auto"
+                    rx.divider(
+                        orientation="vertical",
+                        border_color="rgba(255, 255, 255, 0.7)",
+                        _light={"border_color": "black"}
                     ),
-                    rx.image(
-                        src="/spring-boot.png",
-                        width=["30px", "36px", "36px", "36px", "36px"],
-                        height="auto"
+                    rx.hstack(
+                        rx.foreach(State.images_paths, create_stach_image),
+                        spacing="2.5rem"
                     ),
-                    rx.image(
-                        src="/postgresql.png",
-                        width=["30px", "36px", "36px", "36px", "36px"],
-                        height="auto"
+                    spacing="1rem"
+                )
+            ),
+            rx.mobile_only(
+                rx.hstack(
+                    rx.heading(
+                        "Tech Stack  |",
+                        font_size=["1rem", "md", "xl", "xl", "xl"],
+                        transition="all 300ms ease"
                     ),
-                    rx.image(
-                        src="/mongodb.png",
-                        width=["30px", "36px", "36px", "36px", "36px"],
-                        height="auto"
+                    rx.divider(
+                        orientation="vertical",
+                        border_color="rgba(255, 255, 255, 0.7)",
+                        _light={"border_color": "black"}
                     ),
-                    spacing="6vw"
-                ),
-                spacing="4vw"
+                    rx.hstack(
+                        rx.foreach(State.images_paths, create_stach_image),
+                        spacing="1.5rem"
+                    ),
+                    spacing="1rem"
+                )
             )
         ]
