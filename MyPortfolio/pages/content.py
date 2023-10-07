@@ -66,14 +66,15 @@ class Content(rx.Vstack):
                         spacing="3rem"
                     ),
                     spacing="2rem",
-                    margin_top="10rem"
+                    margin_top="10rem",
+                    padding=["0 1.5rem"]
                 )
             ),
             rx.mobile_only(
                 rx.hstack(
                     rx.heading(
                         "Tech Stack",
-                        font_size=["1rem", "md", "xl", "xl", "xl"],
+                        size="1rem",
                         transition="all 300ms ease"
                     ),
                     rx.divider(
@@ -84,10 +85,11 @@ class Content(rx.Vstack):
                     ),
                     rx.hstack(
                         rx.foreach(State.images_paths, create_stach_image),
-                        spacing="1.5rem"
+                        spacing="1rem"
                     ),
                     spacing="1rem",
-                    margin_top="10rem"
+                    margin_top="10rem",
+                    padding=["0 1.5rem"]
                 )
             ),
             rx.tablet_and_desktop(
@@ -121,7 +123,41 @@ class Content(rx.Vstack):
                     ),
                     margin_top="11rem",
                     spacing="3rem",
-                    align_items="start"
+                    align_items="start",
+                    padding=["0 1.5rem"]
+                )
+            ),
+            rx.mobile_only(
+                rx.container(
+                    rx.vstack(
+                        rx.heading(
+                            "ABOUT ME",
+                            size="xs",
+                            font_weight="700",
+                        ),
+                        rx.heading(
+                            "A dedicated Back-end Developer based in Milan, Italy 📍",
+                            size="md",
+                            text_align="center"
+                        ),
+                        rx.image(
+                            src="/pc_desk.jpg",
+                            width="300px",
+                            height="auto",
+                            box_shadow="xl",
+                            border_radius="15px 15px"
+                        ),
+                        rx.text(
+                            "I'm a Software Engineer experienced in Java, Microservices, and Cloud Computing. Skilled in building secure, scalable applications with Spring Boot and Docker. Adaptable team player with strong communication, working well in Agile and Waterfall environments.",
+                            font_size="0.8rem",
+                            text_align="justify"
+                        ),
+                        spacing="1.5rem",
+                        align_items="center",
+                        justify_content="center"
+                    ),
+                    margin_top="11rem",
+                    padding=["0 1.5rem"]
                 )
             )
         ]
