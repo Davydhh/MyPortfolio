@@ -52,7 +52,7 @@ class Content(rx.Vstack):
                 rx.hstack(
                     rx.heading(
                         "Tech Stack",
-                        font_size=["1rem", "md", "xl", "xl", "xl"],
+                        size="md",
                         transition="all 300ms ease"
                     ),
                     rx.divider(
@@ -113,7 +113,7 @@ class Content(rx.Vstack):
                                 size="md"
                             ),
                             rx.text(
-                                "I'm a Software Engineer with expertise in Java, Microservices, Cloud Computing, and Edge Computing. I specialize in building secure, scalable, and cloud-native applications with Spring Boot and Docker. My experience with asynchronous technologies like RabbitMQ and Apache Kafka enables me to create resilient systems. I'm a collaborative team player known for my effective communication, adapting seamlessly to both Agile and Waterfall environments. My commitment to continuous learning ensures I deliver top-notch results for clients and stakeholders.",
+                                "I'm a Software Engineer experienced in Java, Microservices, and Cloud Computing. Skilled in building secure, scalable applications with Spring Boot and Docker. Adaptable team player with strong communication, working well in Agile and Waterfall environments.",
                                 font_size="0.8rem"
                             ),
                             justify_content="left",
@@ -133,7 +133,7 @@ class Content(rx.Vstack):
                         rx.heading(
                             "ABOUT ME",
                             size="xs",
-                            font_weight="700",
+                            font_weight="700"
                         ),
                         rx.heading(
                             "A dedicated Back-end Developer based in Milan, Italy 📍",
@@ -142,7 +142,7 @@ class Content(rx.Vstack):
                         ),
                         rx.image(
                             src="/pc_desk.jpg",
-                            width="300px",
+                            width="330px",
                             height="auto",
                             box_shadow="xl",
                             border_radius="15px 15px"
@@ -150,7 +150,8 @@ class Content(rx.Vstack):
                         rx.text(
                             "I'm a Software Engineer experienced in Java, Microservices, and Cloud Computing. Skilled in building secure, scalable applications with Spring Boot and Docker. Adaptable team player with strong communication, working well in Agile and Waterfall environments.",
                             font_size="0.8rem",
-                            text_align="justify"
+                            text_align="justify",
+                            max_w="330px"
                         ),
                         spacing="1.5rem",
                         align_items="center",

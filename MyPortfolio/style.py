@@ -14,7 +14,7 @@ style: dict = {
             "background_size": "25px 25px"
         },
         "_light": {
-            "background": "radial-gradient(circle, rgba(0, 0, 0, 0.35) 1px, transparent 1px)",
+            "background": "radial-gradient(circle, rgba(0, 0, 0, 0.09) 1px, transparent 1px)",
             "background_size": "25px 25px"
         },
         "@keyframes dots": {
