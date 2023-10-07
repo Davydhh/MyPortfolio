@@ -7,7 +7,7 @@ class Footer(rx.Hstack):
         super().__init__(style=style.get("footer"))
         self.children = [
             rx.text(
-                "Copyright © 2023 Davide Cazzetta",
+                "Copyright © 2023. All rights reserved",
                 font_size="xs",
                 _light={"color": "black"},
                 _dark={"color": "white"}

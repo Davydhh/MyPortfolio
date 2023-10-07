@@ -9,7 +9,6 @@ style: dict = {
     },
     "main": {
         "width": "100%",
-        "height": "100vh",
         "_dark": {
             "background": "radial-gradient(circle, rgba(255, 255, 255, 0.09) 1px, transparent 1px)",
             "background_size": "25px 25px"
@@ -23,13 +22,15 @@ style: dict = {
             "100%": {"background_position": "40px 40px"}
         },
         "animation": "dots 4s linear infinite alternate-reverse both"
-
     },
     "header": {
         "_dark": {"bg": "#141518"},
         "_light": {"bg": "#ffffff"},
         "width": "100%",
         "height": "50px",
+        "position": "fixed",
+        "top": "0px",
+        "z_index": "1",
         "padding": [
             "0 1rem",
             "0 1rem",
@@ -47,13 +48,16 @@ style: dict = {
     "content": {
         "width": "100%",
         "height": "inherit",
-        "padding": "15rem 0rem",
+        "padding_top": "15rem",
+        "padding_bottom": "5rem",
         "align_items": "center",
         "justify_content": "start"
     },
     "footer": {
         "width": "100%",
-        "height": "60px",
+        "height": "30px",
+        "bottom": "0px",
+        "z_index": "1",
         "_dark": {"bg": "#141518"},
         "_light": {"bg": "#ffffff"},
         "box_shadow": "0px 8px 16px 0px rgba(0,0,0,0.25)",

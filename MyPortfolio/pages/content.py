@@ -89,5 +89,39 @@ class Content(rx.Vstack):
                     spacing="1rem",
                     margin_top="10rem"
                 )
+            ),
+            rx.tablet_and_desktop(
+                rx.hstack(
+                    rx.image(
+                        src="/pc_desk.jpg",
+                        width="250px",
+                        height="auto",
+                        box_shadow="xl",
+                        border_radius="15px 15px"
+                    ),
+                    rx.box(
+                        rx.vstack(
+                            rx.heading(
+                                "ABOUT ME",
+                                size="xs",
+                                font_weight="700",
+                            ),
+                            rx.heading(
+                                "A dedicated Back-end Developer based in Milan, Italy 📍",
+                                size="md"
+                            ),
+                            rx.text(
+                                "I'm a Software Engineer with expertise in Java, Microservices, Cloud Computing, and Edge Computing. I specialize in building secure, scalable, and cloud-native applications with Spring Boot and Docker. My experience with asynchronous technologies like RabbitMQ and Apache Kafka enables me to create resilient systems. I'm a collaborative team player known for my effective communication, adapting seamlessly to both Agile and Waterfall environments. My commitment to continuous learning ensures I deliver top-notch results for clients and stakeholders.",
+                                font_size="0.8rem"
+                            ),
+                            justify_content="left",
+                            align_items="start"
+                        ),
+                        max_w="350px"
+                    ),
+                    margin_top="11rem",
+                    spacing="3rem",
+                    align_items="start"
+                )
             )
         ]
