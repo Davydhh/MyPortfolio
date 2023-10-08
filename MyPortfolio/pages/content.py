@@ -100,7 +100,7 @@ class Content(rx.Vstack):
                 ),
                 margin_top="15rem",
                 spacing="3rem",
-                align_items="start",
+                align_items="stretch",
                 padding=["0 1.5rem"]
             )
         )
@@ -229,12 +229,13 @@ class Content(rx.Vstack):
                     ),
                     rx.vstack(
                         rx.heading(
-                            "WORKOUT TRACKER",
+                            "WORKOUT TRACKER 🏋🏻",
                             size="sm"
                         ),
                         rx.text(
                             "WorkoutTracker is a Fitness App that allows you to stop having to keep track of the repetitions of each exercise since it will do it for you, through the Augmented Reality and Computer Vision. But that's not all it does, as it memorizes the order of the exercises and, as soon as you have finished performing all the repetitions for one exercise, it will remind you which one is next.",
-                            font_size="0.8rem"
+                            font_size="0.8rem",
+                            text_align="center"
                         ),
                         rx.hstack(
                             rx.heading(
@@ -257,14 +258,20 @@ class Content(rx.Vstack):
                                     src="/github.png",
                                     width=["20px", "22px",
                                            "24px", "24px", "24px"],
-                                    _dark={"filter": "brightness(0) invert(1)"}
+                                    _dark={"filter": "brightness(0) invert(1)"},
+                                    transition="all 300ms ease"
                                 ),
                                 href="https://github.com/Davydhh/WorkoutTracker"
                             ),
                             rx.link(
                                 rx.button(
                                     "Live Demo",
-                                    rx.icon(tag="external_link"),
+                                    rx.icon(
+                                        tag="external_link",
+                                        padding_left="0.5rem",
+                                        width=["20px", "22px", "24px", "24px", "24px"],
+                                        transition="all 300ms ease"
+                                    ),
                                     icon_spacing=10,
                                     color_scheme="none",
                                     _dark={"color": "white"},
