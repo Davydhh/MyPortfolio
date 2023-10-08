@@ -49,9 +49,17 @@ def create_breadcrumb_item(path: str, title: str, url: str):
         )
     )
 
+
 def create_stach_image(path: str):
     return rx.image(
         src=path,
         width=["29px", "32px", "32px", "36px", "36px"],
         height="auto"
+    )
+
+
+def create_xs_heading(title: str):
+    return rx.heading(
+        title,
+        size="xs"
     )

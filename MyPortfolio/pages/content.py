@@ -1,12 +1,14 @@
 import reflex as rx
 from ..style import style, wave
-from ..utilities.utility import create_badge, create_breadcrumb_item, create_stach_image
+from ..utilities.utility import create_badge, create_breadcrumb_item, create_stach_image, create_xs_heading
 from ..states.state import State
 
 
 class Content(rx.Vstack):
     card_titles: list = ["Software Engineer",
                          "Microservices Developer", "Java Developer"]
+
+    workout_project_description: str = "WorkoutTracker is a Fitness App that allows you to stop having to keep track of the repetitions of each exercise since it will do it for you, through the Augmented Reality and Computer Vision. But that's not all it does, as it memorizes the order of the exercises and, as soon as you have finished performing all the repetitions for one exercise, it will remind you which one is next."
 
     def __init__(self):
         super().__init__(style=style.get("content"))
@@ -227,41 +229,41 @@ class Content(rx.Vstack):
                         border_radius="15px 15px",
                         transition="all 300ms ease"
                     ),
-                    rx.vstack(
+                    self.project_description_desktop("WORKOUT TRACKER 🏋🏻", self.workout_project_description, ["iOS", "Swift", "SwiftUI"], "/github.png", "https://github.com/Davydhh/WorkoutTracker", "https://youtube.com/shorts/pQXOGQ_unDc?si=jk1EsxEdMWbwd8kX"),
+                    spacing="4rem"
+                ),
+                margin_top="15rem",
+                padding=["0 1.5rem"],
+                spacing="3rem",
+                align_items="stretch"
+            )
+        )
+
+    def project_description_desktop(self, title: str, description: str, stack: list, image_path: str, github_link: str, demo_link: str):
+        return rx.vstack(
                         rx.heading(
-                            "WORKOUT TRACKER 🏋🏻",
+                            title,
                             size="sm"
                         ),
                         rx.text(
-                            "WorkoutTracker is a Fitness App that allows you to stop having to keep track of the repetitions of each exercise since it will do it for you, through the Augmented Reality and Computer Vision. But that's not all it does, as it memorizes the order of the exercises and, as soon as you have finished performing all the repetitions for one exercise, it will remind you which one is next.",
+                            description,
                             font_size="0.8rem",
                             text_align="center"
                         ),
                         rx.hstack(
-                            rx.heading(
-                                "iOS",
-                                size="xs"
-                            ),
-                            rx.heading(
-                                "SwiftUI",
-                                size="xs"
-                            ),
-                            rx.heading(
-                                "Swift",
-                                size="xs"
-                            ),
+                            rx.foreach(stack, create_xs_heading),
                             spacing="2rem"
                         ),
                         rx.hstack(
                             rx.link(
                                 rx.image(
-                                    src="/github.png",
+                                    src=image_path,
                                     width=["20px", "22px",
                                            "24px", "24px", "24px"],
                                     _dark={"filter": "brightness(0) invert(1)"},
                                     transition="all 300ms ease"
                                 ),
-                                href="https://github.com/Davydhh/WorkoutTracker"
+                                href=github_link
                             ),
                             rx.link(
                                 rx.button(
@@ -278,18 +280,10 @@ class Content(rx.Vstack):
                                     _light={"color": "black"},
                                     variant="link"
                                 ),
-                                href="https://youtube.com/shorts/pQXOGQ_unDc?si=jk1EsxEdMWbwd8kX"
+                                href=demo_link
                             ),
                             spacing="2rem"
                         ),
                         max_w="350px",
                         spacing="1rem"
-                    ),
-                    spacing="4rem"
-                ),
-                margin_top="15rem",
-                padding=["0 1.5rem"],
-                spacing="3rem",
-                align_items="stretch"
-            )
-        )
+                    )
