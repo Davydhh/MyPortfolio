@@ -9,6 +9,7 @@ class Content(rx.Vstack):
                          "Microservices Developer", "Java Developer"]
 
     workout_project_description: str = "WorkoutTracker is a Fitness App that allows you to stop having to keep track of the repetitions of each exercise since it will do it for you, through the Augmented Reality and Computer Vision. But that's not all it does, as it memorizes the order of the exercises and, as soon as you have finished performing all the repetitions for one exercise, it will remind you which one is next."
+    covid_project_description: str = "My COVID-19 Tracker Android app is designed to provide real-time information about the spread of COVID-19 in Italy. The app features an interactive map, offering data at the national, regional, and city levels, allowing users to stay informed about the latest statistics and trends."
 
     def __init__(self):
         super().__init__(style=style.get("content"))
@@ -220,16 +221,11 @@ class Content(rx.Vstack):
                     align_items="left",
                     justify_content="left",
                 ),
-                rx.hstack(
-                    rx.image(
-                        src="/workout.jpg",
-                        width=["200px", "250px", "350px", "350px", "350px"],
-                        height="auto",
-                        box_shadow="xl",
-                        border_radius="15px 15px",
-                        transition="all 300ms ease"
-                    ),
-                    self.project_description_desktop("WORKOUT TRACKER 🏋🏻", self.workout_project_description, ["iOS", "Swift", "SwiftUI"], "/github.png", "https://github.com/Davydhh/WorkoutTracker", "https://youtube.com/shorts/pQXOGQ_unDc?si=jk1EsxEdMWbwd8kX"),
+                rx.vstack(
+                    self.project_block("WORKOUT TRACKER 🏋🏻", self.workout_project_description, [
+                        "iOS", "Swift", "SwiftUI"], "https://github.com/Davydhh/WorkoutTracker", "https://youtube.com/shorts/pQXOGQ_unDc?si=jk1EsxEdMWbwd8kX", "/workout.jpg"),
+                    self.project_block("COVID-19 🦠", self.covid_project_description, [
+                                       "Android", "Java"], "https://github.com/Davydhh/Covid-19", "https://youtu.be/pNddCViY9oI?si=uyznrarIsA_7Zcmj", "/covid.jpg", image_left=False),
                     spacing="4rem"
                 ),
                 margin_top="15rem",
@@ -239,51 +235,85 @@ class Content(rx.Vstack):
             )
         )
 
-    def project_description_desktop(self, title: str, description: str, stack: list, image_path: str, github_link: str, demo_link: str):
+    def project_block(self, title: str, description: str, stack: list, github_link: str, demo_link: str, image_path: str, image_left: bool = True):
+        if image_left:
+            return rx.hstack(
+                rx.image(
+                    src=image_path,
+                    width=["200px", "250px",
+                           "350px", "350px", "350px"],
+                    height="auto",
+                    box_shadow="xl",
+                    border_radius="15px 15px",
+                    transition="all 300ms ease"
+                ),
+                self.project_description_desktop(
+                    title, description, stack, github_link, demo_link),
+                spacing="4rem"
+            )
+        else:
+            return rx.hstack(
+                self.project_description_desktop(
+                    title, description, stack, github_link, demo_link),
+                rx.image(
+                    src=image_path,
+                    width=["200px", "250px",
+                           "350px", "350px", "350px"],
+                    height="auto",
+                    box_shadow="xl",
+                    border_radius="15px 15px",
+                    transition="all 300ms ease"
+                ),
+                spacing="4rem"
+            )
+
+    def project_description_desktop(self, title: str, description: str, stack: list, github_link: str, demo_link: str):
         return rx.vstack(
-                        rx.heading(
-                            title,
-                            size="sm"
+            rx.heading(
+                title,
+                size="sm"
+            ),
+            rx.text(
+                description,
+                font_size="0.8rem",
+                text_align="center"
+            ),
+            rx.hstack(
+                rx.foreach(stack, create_xs_heading),
+                spacing="2rem"
+            ),
+            rx.hstack(
+                rx.link(
+                    rx.image(
+                        src="/github.png",
+                        width=["20px", "22px",
+                               "24px", "24px", "24px"],
+                        _dark={
+                            "filter": "brightness(0) invert(1)"},
+                        transition="all 300ms ease"
+                    ),
+                    href=github_link
+                ),
+                rx.link(
+                    rx.button(
+                        "Live Demo",
+                        rx.icon(
+                            tag="external_link",
+                            padding_left="0.5rem",
+                            width=["20px", "22px",
+                                   "24px", "24px", "24px"],
+                            transition="all 300ms ease"
                         ),
-                        rx.text(
-                            description,
-                            font_size="0.8rem",
-                            text_align="center"
-                        ),
-                        rx.hstack(
-                            rx.foreach(stack, create_xs_heading),
-                            spacing="2rem"
-                        ),
-                        rx.hstack(
-                            rx.link(
-                                rx.image(
-                                    src=image_path,
-                                    width=["20px", "22px",
-                                           "24px", "24px", "24px"],
-                                    _dark={"filter": "brightness(0) invert(1)"},
-                                    transition="all 300ms ease"
-                                ),
-                                href=github_link
-                            ),
-                            rx.link(
-                                rx.button(
-                                    "Live Demo",
-                                    rx.icon(
-                                        tag="external_link",
-                                        padding_left="0.5rem",
-                                        width=["20px", "22px", "24px", "24px", "24px"],
-                                        transition="all 300ms ease"
-                                    ),
-                                    icon_spacing=10,
-                                    color_scheme="none",
-                                    _dark={"color": "white"},
-                                    _light={"color": "black"},
-                                    variant="link"
-                                ),
-                                href=demo_link
-                            ),
-                            spacing="2rem"
-                        ),
-                        max_w="350px",
-                        spacing="1rem"
-                    )
+                        icon_spacing=10,
+                        color_scheme="none",
+                        _dark={"color": "white"},
+                        _light={"color": "black"},
+                        variant="link"
+                    ),
+                    href=demo_link
+                ),
+                spacing="2rem"
+            ),
+            max_w="350px",
+            spacing="1rem"
+        )
