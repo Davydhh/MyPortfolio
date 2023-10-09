@@ -1,0 +1,22 @@
+# Projects Section
+projects:
+  - name: "Workout Tracker 🏋🏻"
+    description: |
+      WorkoutTracker is a Fitness App that uses Augmented Reality and Computer Vision to track repetitions of exercises for you. It also memorizes the order of exercises and provides reminders for the next exercise.
+    technologies:
+      - iOS
+      - Swift
+      - SwiftUI
+    github: "https://github.com/Davydhh/WorkoutTracker"
+    live_demo: "https://youtube.com/shorts/pQXOGQ_unDc?si=jk1EsxEdMWbwd8kX"
+    image_path: "/workout.jpg"
+
+  - name: "COVID-19 TRACKER 🦠"
+    description: |
+      My COVID-19 Tracker Android app provides real-time information about the spread of COVID-19 in Italy. The app offers data at the national, regional, and city levels, allowing users to stay informed about the latest statistics and trends.
+    technologies:
+      - Android
+      - Java
+    github: "https://github.com/Davydhh/Covid-19"
+    live_demo: "https://youtu.be/pNddCViY9oI?si=uyznrarIsA_7Zcmj"
+    image_path: "/covid.jpg"

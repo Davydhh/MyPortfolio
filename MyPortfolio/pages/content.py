@@ -1,15 +1,19 @@
+import os
 import reflex as rx
-from ..style import style, wave
-from ..utilities.utility import create_badge, create_breadcrumb_item, create_stach_image, create_xs_heading
-from ..states.state import State
 
+from ..style import style, wave
+from ..utilities.utility import create_badge, create_breadcrumb_item, create_stach_image, create_xs_heading, project_image
+from ..states.state import State
+from ..utilities.yaml_reader import read_yaml
+
+configuration = read_yaml(os.getcwd() + "/configuration.yaml")
 
 class Content(rx.Vstack):
     card_titles: list = ["Software Engineer",
                          "Microservices Developer", "Java Developer"]
-
-    workout_project_description: str = "WorkoutTracker is a Fitness App that allows you to stop having to keep track of the repetitions of each exercise since it will do it for you, through the Augmented Reality and Computer Vision. But that's not all it does, as it memorizes the order of the exercises and, as soon as you have finished performing all the repetitions for one exercise, it will remind you which one is next."
-    covid_project_description: str = "My COVID-19 Tracker Android app is designed to provide real-time information about the spread of COVID-19 in Italy. The app features an interactive map, offering data at the national, regional, and city levels, allowing users to stay informed about the latest statistics and trends."
+    
+    workout_project = configuration["projects"][0]
+    covid_project = configuration["projects"][1]
 
     def __init__(self):
         super().__init__(style=style.get("content"))
@@ -222,10 +226,8 @@ class Content(rx.Vstack):
                     justify_content="left",
                 ),
                 rx.vstack(
-                    self.project_block("WORKOUT TRACKER 🏋🏻", self.workout_project_description, [
-                        "iOS", "Swift", "SwiftUI"], "https://github.com/Davydhh/WorkoutTracker", "https://youtube.com/shorts/pQXOGQ_unDc?si=jk1EsxEdMWbwd8kX", "/workout.jpg"),
-                    self.project_block("COVID-19 🦠", self.covid_project_description, [
-                                       "Android", "Java"], "https://github.com/Davydhh/Covid-19", "https://youtu.be/pNddCViY9oI?si=uyznrarIsA_7Zcmj", "/covid.jpg", image_left=False),
+                    self.project_block(self.workout_project["name"], self.workout_project["description"], self.workout_project["technologies"], self.workout_project["github"], self.workout_project["live_demo"], self.workout_project["image_path"]),
+                    self.project_block(self.covid_project["name"], self.covid_project["description"], self.covid_project["technologies"], self.covid_project["github"], self.covid_project["live_demo"], self.covid_project["image_path"], image_left=False),
                     spacing="4rem"
                 ),
                 margin_top="15rem",
@@ -238,15 +240,7 @@ class Content(rx.Vstack):
     def project_block(self, title: str, description: str, stack: list, github_link: str, demo_link: str, image_path: str, image_left: bool = True):
         if image_left:
             return rx.hstack(
-                rx.image(
-                    src=image_path,
-                    width=["200px", "250px",
-                           "350px", "350px", "350px"],
-                    height="auto",
-                    box_shadow="xl",
-                    border_radius="15px 15px",
-                    transition="all 300ms ease"
-                ),
+                project_image(image_path),
                 self.project_description_desktop(
                     title, description, stack, github_link, demo_link),
                 spacing="4rem"
@@ -255,15 +249,7 @@ class Content(rx.Vstack):
             return rx.hstack(
                 self.project_description_desktop(
                     title, description, stack, github_link, demo_link),
-                rx.image(
-                    src=image_path,
-                    width=["200px", "250px",
-                           "350px", "350px", "350px"],
-                    height="auto",
-                    box_shadow="xl",
-                    border_radius="15px 15px",
-                    transition="all 300ms ease"
-                ),
+                project_image(image_path),
                 spacing="4rem"
             )
 
@@ -304,7 +290,6 @@ class Content(rx.Vstack):
                                    "24px", "24px", "24px"],
                             transition="all 300ms ease"
                         ),
-                        icon_spacing=10,
                         color_scheme="none",
                         _dark={"color": "white"},
                         _light={"color": "black"},

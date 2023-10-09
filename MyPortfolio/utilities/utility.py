@@ -63,3 +63,14 @@ def create_xs_heading(title: str):
         title,
         size="xs"
     )
+
+
+def project_image(path: str):
+    return rx.image(
+        src=path,
+        width=["200px", "250px", "350px", "350px", "350px"],
+        height="auto",
+        box_shadow="xl",
+        border_radius="15px 15px",
+        transition="all 300ms ease"
+    )
