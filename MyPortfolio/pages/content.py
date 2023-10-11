@@ -9,9 +9,8 @@ from ..utilities.yaml_reader import read_yaml
 configuration = read_yaml(os.getcwd() + "/configuration.yaml")
 
 class Content(rx.Vstack):
-    card_titles: list = ["Software Engineer",
-                         "Microservices Developer", "Java Developer"]
-    
+    page_configuration = configuration["content_page"]
+    card_titles: list = page_configuration["card_titles"]
     workout_project = configuration["projects"][0]
     covid_project = configuration["projects"][1]
 
@@ -35,7 +34,7 @@ class Content(rx.Vstack):
             rx.container(
                 rx.vstack(
                     rx.heading(
-                        "ABOUT ME",
+                        self.page_configuration["about_me"],
                         size="xs",
                         font_weight="900",
                         _dark={
@@ -44,7 +43,7 @@ class Content(rx.Vstack):
                         }
                     ),
                     rx.heading(
-                        "A dedicated Back-end Developer based in Milan, Italy 📍",
+                        self.page_configuration["short_description"],
                         size="md",
                         text_align="center"
                     ),
@@ -56,7 +55,7 @@ class Content(rx.Vstack):
                         border_radius="15px 15px"
                     ),
                     rx.text(
-                        "I'm a Software Engineer experienced in Java, Microservices, and Cloud Computing. Skilled in building secure, scalable applications with Spring Boot and Docker. Adaptable team player with strong communication, working well in Agile and Waterfall environments.",
+                        self.page_configuration["medium_description"],
                         font_size="0.8rem",
                         text_align="justify",
                         max_w="330px"
@@ -84,7 +83,7 @@ class Content(rx.Vstack):
                 rx.box(
                     rx.vstack(
                         rx.heading(
-                            "ABOUT ME",
+                            self.page_configuration["about_me"],
                             size="xs",
                             font_weight="900",
                             _dark={
@@ -93,11 +92,11 @@ class Content(rx.Vstack):
                             }
                         ),
                         rx.heading(
-                            "A dedicated Back-end Developer based in Milan, Italy 📍",
+                            self.page_configuration["short_description"],
                             size="md"
                         ),
                         rx.text(
-                            "I'm a Software Engineer experienced in Java, Microservices, and Cloud Computing. Skilled in building secure, scalable applications with Spring Boot and Docker. Adaptable team player with strong communication, working well in Agile and Waterfall environments.",
+                            self.page_configuration["medium_description"],
                             font_size="0.8rem"
                         ),
                         justify_content="left",
@@ -116,7 +115,7 @@ class Content(rx.Vstack):
         return rx.mobile_only(
             rx.hstack(
                 rx.heading(
-                    "Tech Stack",
+                    self.page_configuration["tech_stack"],
                     size="1rem",
                     transition="all 300ms ease"
                 ),
@@ -140,7 +139,7 @@ class Content(rx.Vstack):
         return rx.tablet_and_desktop(
             rx.hstack(
                 rx.heading(
-                    "Tech Stack",
+                    self.page_configuration["tech_stack"],
                     size="md",
                     transition="all 300ms ease"
                 ),
@@ -191,7 +190,7 @@ class Content(rx.Vstack):
     def landing_block(self):
         return rx.hstack(
             rx.heading(
-                "Hi - I'm Davide",
+                self.page_configuration["hello"],
                 size="2xl",
                 transition="all 300ms ease",
                 font_weight="900",
@@ -209,7 +208,7 @@ class Content(rx.Vstack):
             rx.vstack(
                 rx.vstack(
                     rx.heading(
-                        "PROJECTS",
+                        self.page_configuration["projects"],
                         size="xs",
                         font_weight="900",
                         _dark={
@@ -218,7 +217,7 @@ class Content(rx.Vstack):
                         }
                     ),
                     rx.heading(
-                        "One personal and one university project 💻",
+                        self.page_configuration["projects_introduction"],
                         size="md"
                     ),
                     spacing="1.5rem",

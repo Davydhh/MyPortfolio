@@ -1,15 +1,19 @@
+import os
 import reflex as rx
 from ..style import style
 from ..states.state import State
 from ..utilities.utility import create_menu_item, create_header_button
+from ..utilities.yaml_reader import read_yaml
+
+configuration = read_yaml(os.getcwd() + "/configuration.yaml")
 
 class Header(rx.Hstack):
-    menu_titles = ["Home", "About", "Projects", "Contact"]
+    menu_titles = configuration["header"]["buttons"]
 
     def __init__(self):
         super().__init__(style=style.get("header"))
         self.children = [
-            rx.heading("Davide.dev", size="md"),
+            rx.heading(configuration["header"]["title"], size="md"),
             rx.spacer(),
             rx.tablet_and_desktop(
                 rx.foreach(self.menu_titles, create_header_button)
