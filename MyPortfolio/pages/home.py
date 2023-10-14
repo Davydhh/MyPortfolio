@@ -3,7 +3,6 @@ import reflex as rx
 
 from ..style import style, wave
 from ..utilities.utility import create_badge, create_breadcrumb_item, create_stach_image, create_xs_heading, project_image_desktop, project_image_mobile
-from ..states.state import State, AlertDialogState
 from ..utilities.yaml_reader import read_yaml
 
 configuration = read_yaml(os.getcwd() + "/configuration.yaml")
@@ -14,6 +13,8 @@ class Home(rx.Vstack):
     card_titles: list = page_configuration["card_titles"]
     workout_project = configuration["projects"][0]
     covid_project = configuration["projects"][1]
+
+    images_paths: list = ["/java.png", "/python.png", "/spring-boot.png", "/postgresql.png", "/mongodb.png"]
 
     def __init__(self):
         super().__init__(style=style.get("content"))
@@ -128,7 +129,7 @@ class Home(rx.Vstack):
                     _light={"border_color": "black"}
                 ),
                 rx.hstack(
-                    rx.foreach(State.images_paths, create_stach_image),
+                    rx.foreach(self.images_paths, create_stach_image),
                     spacing="1rem"
                 ),
                 spacing="1rem",
@@ -152,7 +153,7 @@ class Home(rx.Vstack):
                     _light={"border_color": "black"}
                 ),
                 rx.hstack(
-                    rx.foreach(State.images_paths, create_stach_image),
+                    rx.foreach(self.images_paths, create_stach_image),
                     spacing="3rem"
                 ),
                 spacing="2rem",

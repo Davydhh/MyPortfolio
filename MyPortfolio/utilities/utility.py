@@ -2,18 +2,25 @@ import reflex as rx
 from ..style import style
 
 
-def create_menu_item(title: str):
+def create_menu_item(title: str, ref: str):
     return rx.menu_item(
-        title,
+        rx.link(
+            title,
+            href=ref,
+            style=style.get("header_buttons")
+        ),
         style=style.get("app")
     )
 
 
-def create_header_button(title: str):
-    return rx.button(
-        title,
-        color_scheme="none",
-        style=style.get("header_buttons")
+def create_header_button(title: str, ref: str):
+    return rx.link(
+        rx.button(
+            title,
+            color_scheme="none",
+            style=style.get("header_buttons")
+        ),
+        href=ref
     )
 
 
@@ -74,6 +81,8 @@ def project_image_desktop(path: str):
         border_radius="15px 15px",
         transition="all 300ms ease"
     )
+
+
 def project_image_mobile(path: str):
     return rx.image(
         src=path,

@@ -1,14 +1,13 @@
 import os
 import reflex as rx
-from ..style import style
-from ..states.state import State
-from ..utilities.utility import create_menu_item, create_header_button
-from ..utilities.yaml_reader import read_yaml
+from MyPortfolio.style import style
+from MyPortfolio.utilities.utility import create_menu_item, create_header_button
+from MyPortfolio.utilities.yaml_reader import read_yaml
 
 configuration = read_yaml(os.getcwd() + "/configuration.yaml")
 
 class Header(rx.Hstack):
-    menu_titles = configuration["header"]["buttons"]
+    header_buttons: list = configuration["header"]["buttons"]
 
     def __init__(self):
         super().__init__(style=style.get("header"))
@@ -16,7 +15,10 @@ class Header(rx.Hstack):
             rx.heading(configuration["header"]["title"], size="md"),
             rx.spacer(),
             rx.tablet_and_desktop(
-                rx.foreach(self.menu_titles, create_header_button)
+               create_header_button("Home", "/"),
+               create_header_button("About", "/about"),
+               create_header_button("Projects", "/projects"),
+               create_header_button("Contact", "/contact")
             ),
             rx.color_mode_button(
                 rx.color_mode_icon(),
@@ -27,21 +29,26 @@ class Header(rx.Hstack):
             rx.mobile_only(
                 rx.menu(
                     rx.menu_button(
-                        rx.cond(
-                            State.is_menu_open,
-                            rx.icon(tag="close"),
-                            rx.icon(tag="hamburger")
-                        ),
+                        rx.icon(tag="hamburger"),
                         color_scheme="none",
                         _dark={"filter": "brightness(0) invert(1)"}
                     ),
                     rx.menu_list(
-                        rx.foreach(self.menu_titles, create_menu_item),
+                        create_menu_item(
+                            "Home", "/"
+                        ),
+                        create_menu_item(
+                            "About", "/about"
+                        ),
+                        create_menu_item(
+                            "Projects", "/projects"
+                        ),
+                        create_menu_item(
+                            "Contact", "/contact"
+                        ),
                         style=style.get("app")
                     ),
-                    auto_select=False,
-                    on_close=State.toggle_menu,
-                    on_open=State.toggle_menu
+                    auto_select=False
                 )
             )
         ]

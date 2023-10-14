@@ -27,7 +27,7 @@ content_page:
     - Microservices Developer
     - Java Developer
   short_description: "A dedicated Backend Developer based in Milan, Italy 📍"
-  medium_description: "I'm a Software Engineer experienced in Java, Microservices, and Cloud Computing. Skilled in building secure, scalable applications with Spring Boot and Docker. Adaptable team player with strong communication, working well in Agile and Waterfall environments."  
+  medium_description: "I'm a Software Engineer experienced in Java, Python, Microservices, and Cloud Computing. Skilled in building secure and scalable applications. Adaptable team player with strong communication, working well in Agile and Waterfall environments."
   about_me: "ABOUT ME"
   tech_stack: "Tech Stack"
   hello: "Hi - I'm Davide"
@@ -47,9 +47,13 @@ footer:
 
 header:
   buttons:
-    - Home
-    - About
-    - Projects
-    - Contact
+    - title: "Home"
+      href: "/"
+    - title: "About"
+      href: "/about"
+    - title: "Projects"
+      href: "/projects"
+    - title: "Contact"
+      href: "/contact"
   title: "Davide.dev"
 
