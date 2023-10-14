@@ -8,3 +8,9 @@ class State(rx.State):
 
     def toggle_menu(self):
         self.is_menu_open = not self.is_menu_open
+
+class AlertDialogState(State):
+    is_alert_open: bool = False
+
+    def change(self):
+        self.is_alert_open = not self.is_alert_open

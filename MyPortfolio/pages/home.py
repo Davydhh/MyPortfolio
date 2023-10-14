@@ -3,13 +3,13 @@ import reflex as rx
 
 from ..style import style, wave
 from ..utilities.utility import create_badge, create_breadcrumb_item, create_stach_image, create_xs_heading, project_image_desktop, project_image_mobile
-from ..states.state import State
+from ..states.state import State, AlertDialogState
 from ..utilities.yaml_reader import read_yaml
 
 configuration = read_yaml(os.getcwd() + "/configuration.yaml")
 
 
-class Content(rx.Vstack):
+class Home(rx.Vstack):
     page_configuration = configuration["content_page"]
     card_titles: list = page_configuration["card_titles"]
     workout_project = configuration["projects"][0]
