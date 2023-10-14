@@ -14,7 +14,8 @@ class Home(rx.Vstack):
     workout_project = configuration["projects"][0]
     covid_project = configuration["projects"][1]
 
-    images_paths: list = ["/java.png", "/python.png", "/spring-boot.png", "/postgresql.png", "/mongodb.png"]
+    images_paths: list = ["/java.png", "/python.png",
+                          "/spring-boot.png", "/postgresql.png", "/mongodb.png"]
 
     def __init__(self):
         super().__init__(style=style.get("content"))
