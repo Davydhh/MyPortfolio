@@ -329,12 +329,12 @@ class Content(rx.Vstack):
                 ),
                 rx.vstack(
                     self.project_block_mobile(self.workout_project["name"], self.workout_project["description"], self.workout_project["technologies"],
-                                               self.workout_project["github"], self.workout_project["live_demo"], self.workout_project["image_path"]),
+                                              self.workout_project["github"], self.workout_project["live_demo"], self.workout_project["image_path"]),
                     self.project_block_mobile(self.covid_project["name"], self.covid_project["description"], self.covid_project["technologies"],
-                                               self.covid_project["github"], self.covid_project["live_demo"], self.covid_project["image_path"]),
+                                              self.covid_project["github"], self.covid_project["live_demo"], self.covid_project["image_path"]),
                     spacing="4rem"
                 ),
-                margin_top="10rem",
+                margin_top="11rem",
                 padding=["0 1.5rem"],
                 spacing="3rem",
                 align_items="stretch"
