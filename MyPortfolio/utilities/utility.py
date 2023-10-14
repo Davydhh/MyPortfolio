@@ -65,10 +65,19 @@ def create_xs_heading(title: str):
     )
 
 
-def project_image(path: str):
+def project_image_desktop(path: str):
     return rx.image(
         src=path,
         width=["200px", "250px", "350px", "350px", "350px"],
+        height="auto",
+        box_shadow="xl",
+        border_radius="15px 15px",
+        transition="all 300ms ease"
+    )
+def project_image_mobile(path: str):
+    return rx.image(
+        src=path,
+        width="340px",
         height="auto",
         box_shadow="xl",
         border_radius="15px 15px",

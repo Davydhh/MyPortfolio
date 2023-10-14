@@ -2,11 +2,12 @@ import os
 import reflex as rx
 
 from ..style import style, wave
-from ..utilities.utility import create_badge, create_breadcrumb_item, create_stach_image, create_xs_heading, project_image
+from ..utilities.utility import create_badge, create_breadcrumb_item, create_stach_image, create_xs_heading, project_image_desktop, project_image_mobile
 from ..states.state import State
 from ..utilities.yaml_reader import read_yaml
 
 configuration = read_yaml(os.getcwd() + "/configuration.yaml")
+
 
 class Content(rx.Vstack):
     page_configuration = configuration["content_page"]
@@ -26,7 +27,8 @@ class Content(rx.Vstack):
             self.tech_stack_mobile(),
             self.about_me_block_desktop(),
             self.about_me_block_mobile(),
-            self.projects_block_desktop()
+            self.projects_block_desktop(),
+            self.projects_block_mobile()
         ]
 
     def about_me_block_mobile(self):
@@ -49,7 +51,7 @@ class Content(rx.Vstack):
                     ),
                     rx.image(
                         src="/pc_desk.jpg",
-                        width="330px",
+                        width="340px",
                         height="auto",
                         box_shadow="xl",
                         border_radius="15px 15px"
@@ -225,8 +227,10 @@ class Content(rx.Vstack):
                     justify_content="left",
                 ),
                 rx.vstack(
-                    self.project_block(self.workout_project["name"], self.workout_project["description"], self.workout_project["technologies"], self.workout_project["github"], self.workout_project["live_demo"], self.workout_project["image_path"]),
-                    self.project_block(self.covid_project["name"], self.covid_project["description"], self.covid_project["technologies"], self.covid_project["github"], self.covid_project["live_demo"], self.covid_project["image_path"], image_left=False),
+                    self.project_block_desktop(self.workout_project["name"], self.workout_project["description"], self.workout_project["technologies"],
+                                               self.workout_project["github"], self.workout_project["live_demo"], self.workout_project["image_path"]),
+                    self.project_block_desktop(self.covid_project["name"], self.covid_project["description"], self.covid_project["technologies"],
+                                               self.covid_project["github"], self.covid_project["live_demo"], self.covid_project["image_path"], image_left=False),
                     spacing="4rem"
                 ),
                 margin_top="15rem",
@@ -236,10 +240,10 @@ class Content(rx.Vstack):
             )
         )
 
-    def project_block(self, title: str, description: str, stack: list, github_link: str, demo_link: str, image_path: str, image_left: bool = True):
+    def project_block_desktop(self, title: str, description: str, stack: list, github_link: str, demo_link: str, image_path: str, image_left: bool = True):
         if image_left:
             return rx.hstack(
-                project_image(image_path),
+                project_image_desktop(image_path),
                 self.project_description_desktop(
                     title, description, stack, github_link, demo_link),
                 spacing="4rem"
@@ -248,7 +252,7 @@ class Content(rx.Vstack):
             return rx.hstack(
                 self.project_description_desktop(
                     title, description, stack, github_link, demo_link),
-                project_image(image_path),
+                project_image_desktop(image_path),
                 spacing="4rem"
             )
 
@@ -299,5 +303,89 @@ class Content(rx.Vstack):
                 spacing="2rem"
             ),
             max_w="350px",
+            spacing="1rem"
+        )
+
+    def projects_block_mobile(self):
+        return rx.mobile_only(
+            rx.vstack(
+                rx.vstack(
+                    rx.heading(
+                        self.page_configuration["projects"],
+                        size="xs",
+                        font_weight="900",
+                        _dark={
+                            "background": "linear-gradient(to right, #e1e1e1, #757575)",
+                            "background_clip": "text"
+                        }
+                    ),
+                    rx.heading(
+                        self.page_configuration["projects_introduction"],
+                        size="md"
+                    ),
+                    spacing="1.5rem",
+                    align_items="left",
+                    justify_content="left",
+                ),
+                rx.vstack(
+                    self.project_block_mobile(self.workout_project["name"], self.workout_project["description"], self.workout_project["technologies"],
+                                               self.workout_project["github"], self.workout_project["live_demo"], self.workout_project["image_path"]),
+                    self.project_block_mobile(self.covid_project["name"], self.covid_project["description"], self.covid_project["technologies"],
+                                               self.covid_project["github"], self.covid_project["live_demo"], self.covid_project["image_path"]),
+                    spacing="4rem"
+                ),
+                margin_top="10rem",
+                padding=["0 1.5rem"],
+                spacing="3rem",
+                align_items="stretch"
+            )
+        )
+
+    def project_block_mobile(self, title: str, description: str, stack: list, github_link: str, demo_link: str, image_path: str):
+        return rx.vstack(
+            rx.heading(
+                title,
+                size="sm"
+            ),
+            project_image_mobile(image_path),
+            rx.text(
+                description,
+                font_size="0.8rem",
+                text_align="center"
+            ),
+            rx.hstack(
+                rx.foreach(stack, create_xs_heading),
+                spacing="2rem"
+            ),
+            rx.hstack(
+                rx.link(
+                    rx.image(
+                        src="/github.png",
+                        width="20px",
+                        _dark={
+                            "filter": "brightness(0) invert(1)"},
+                        transition="all 300ms ease"
+                    ),
+                    href=github_link
+                ),
+                rx.link(
+                    rx.button(
+                        "Live Demo",
+                        rx.icon(
+                            tag="external_link",
+                            padding_left="0.5rem",
+                            width="20px",
+                            transition="all 300ms ease"
+                        ),
+                        color_scheme="none",
+                        _dark={"color": "white"},
+                        _light={"color": "black"},
+                        variant="link"
+                    ),
+                    href=demo_link
+                ),
+                spacing="2rem"
+            ),
+            max_w="340px",
             spacing="1rem"
         )
