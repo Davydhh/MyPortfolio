@@ -49,5 +49,5 @@ def home_page() -> rx.Component:
 
 # Add state and page to the app.
 app = rx.App(style=style.get("app"), state=State)
-app.add_page(home_page, route="/", on_load=AlertDialogState.change)
+app.add_page(home_page, route="/", title="Davide.dev", on_load=AlertDialogState.change)
 app.compile()
