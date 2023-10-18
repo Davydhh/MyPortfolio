@@ -32,7 +32,7 @@ content_page:
   tech_stack: "Tech Stack"
   hello: "Hi - I'm Davide"
   projects: "PROJECTS"
-  projects_introduction: "An iOS app and an Android app 💻"
+  projects_introduction: "An iOS app and an Android app 📱"
 
 contacts:
   - name: "LinkedIn"

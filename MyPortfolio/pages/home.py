@@ -39,7 +39,7 @@ class Home(rx.Vstack):
                 rx.vstack(
                     rx.heading(
                         self.page_configuration["about_me"],
-                        size="xs",
+                        size="sm",
                         font_weight="900",
                         _dark={
                             "background": "linear-gradient(to right, #e1e1e1, #757575)",
@@ -60,7 +60,7 @@ class Home(rx.Vstack):
                     ),
                     rx.text(
                         self.page_configuration["medium_description"],
-                        font_size="0.8rem",
+                        size="xs",
                         text_align="justify",
                         max_w="330px"
                     ),
@@ -313,7 +313,7 @@ class Home(rx.Vstack):
                 rx.vstack(
                     rx.heading(
                         self.page_configuration["projects"],
-                        size="xs",
+                        size="sm",
                         font_weight="900",
                         _dark={
                             "background": "linear-gradient(to right, #e1e1e1, #757575)",
@@ -351,7 +351,7 @@ class Home(rx.Vstack):
             project_image_mobile(image_path),
             rx.text(
                 description,
-                font_size="0.8rem",
+                size="xs",
                 text_align="center"
             ),
             rx.hstack(
