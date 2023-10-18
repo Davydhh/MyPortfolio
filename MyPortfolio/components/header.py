@@ -31,7 +31,8 @@ class Header(rx.Hstack):
                     rx.menu_button(
                         rx.icon(tag="hamburger"),
                         color_scheme="none",
-                        _dark={"filter": "brightness(0) invert(1)"}
+                        _dark={"filter": "brightness(0) invert(1)"},
+                        padding_left="0.8rem"
                     ),
                     rx.menu_list(
                         create_menu_item("Home", "/"),
