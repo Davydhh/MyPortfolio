@@ -78,7 +78,7 @@ class Home(rx.Vstack):
             rx.hstack(
                 rx.image(
                     src="/pc_desk.jpg",
-                    width=["150px", "200px", "250px", "250px", "250px"],
+                    width=["200px", "250px", "300px", "300px", "300px"],
                     height="auto",
                     box_shadow="xl",
                     border_radius="15px 15px",
@@ -88,7 +88,7 @@ class Home(rx.Vstack):
                     rx.vstack(
                         rx.heading(
                             self.page_configuration["about_me"],
-                            size="xs",
+                            size="sm",
                             font_weight="900",
                             _dark={
                                 "background": "linear-gradient(to right, #e1e1e1, #757575)",
@@ -101,7 +101,7 @@ class Home(rx.Vstack):
                         ),
                         rx.text(
                             self.page_configuration["medium_description"],
-                            font_size="0.8rem"
+                            size="xs"
                         ),
                         justify_content="left",
                         align_items="start"
@@ -110,7 +110,6 @@ class Home(rx.Vstack):
                 ),
                 margin_top="15rem",
                 spacing="3rem",
-                align_items="stretch",
                 padding=["0 1.5rem"]
             )
         )
@@ -213,7 +212,7 @@ class Home(rx.Vstack):
                 rx.vstack(
                     rx.heading(
                         self.page_configuration["projects"],
-                        size="xs",
+                        size="sm",
                         font_weight="900",
                         _dark={
                             "background": "linear-gradient(to right, #e1e1e1, #757575)",
@@ -266,7 +265,7 @@ class Home(rx.Vstack):
             ),
             rx.text(
                 description,
-                font_size="0.8rem",
+                size="xs",
                 text_align="center"
             ),
             rx.hstack(
@@ -304,7 +303,7 @@ class Home(rx.Vstack):
                 ),
                 spacing="2rem"
             ),
-            max_w="350px",
+            max_w="400px",
             spacing="1rem"
         )
 
