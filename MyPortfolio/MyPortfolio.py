@@ -2,7 +2,7 @@ from rxconfig import config
 
 import reflex as rx
 from .components import header, footer
-from .pages import home
+from .pages import home, about
 from .style import style
 
 
@@ -31,8 +31,13 @@ def home_page() -> rx.Component:
     body: rx.Vstack = home.Home()
     return build_page(body)
 
+def about_page() -> rx.Component:
+    body: rx.Vstack = about.About()
+    return build_page(body)
+
 
 # Add state and page to the app.
 app = rx.App(style=style.get("app"))
 app.add_page(home_page, route="/", title="Davide.dev")
+app.add_page(about_page, route="/about")
 app.compile()

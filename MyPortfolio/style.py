@@ -53,6 +53,14 @@ style: dict = {
         "align_items": "center",
         "justify_content": "start"
     },
+    "about": {
+        "width": "100%",
+        "height": "100vh",
+        "padding_bottom": "5rem",
+        "padding_left": "1.5rem",
+        "padding_right": "1.5rem",
+        "justify_content": "start"
+    },
     "footer": {
         "width": "100%",
         "height": "30px",
