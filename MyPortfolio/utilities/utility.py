@@ -80,7 +80,8 @@ def project_image_desktop(path: str):
         height="auto",
         box_shadow="xl",
         border_radius="15px 15px",
-        transition="all 300ms ease"
+        transition="all 300ms ease",
+        display=["none", "flex", "flex", "flex", "flex"],
     )
 
 

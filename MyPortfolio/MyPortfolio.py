@@ -13,7 +13,7 @@ def build_page(body: rx.Vstack):
     return rx.vstack(
         navbar,
         rx.text(
-            "Site still under development. At the moment the only page that can be viewed is the current one (Home)",
+            "Site still under development",
             color="gray",
             font_size="0.8rem",
             padding_top="55px",
@@ -39,5 +39,5 @@ def about_page() -> rx.Component:
 # Add state and page to the app.
 app = rx.App(style=style.get("app"))
 app.add_page(home_page, route="/", title="Davide.dev")
-app.add_page(about_page, route="/about")
+app.add_page(about_page, route="/about", title="Davide.dev")
 app.compile()

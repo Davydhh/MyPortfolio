@@ -1,4 +1,3 @@
-# Projects Section
 projects:
   - name: "WORKOUT TRACKER 🏋🏻"
     description: |
@@ -57,3 +56,18 @@ header:
       href: "/contact"
   title: "Davide.dev"
 
+about_page:
+  my_story: |
+    Hello, my name is Davide and I was born in Italy in 1998. Since I was a child I have always been passionate about technology, a passion so strong that it drove me to complete a 5-year university degree and then turn my passion into a job. 
+    I love learning new things to improve my skills. 
+
+    For me, Informatics means creativity and limitlessness, you can create anything, the only limit is our mind.
+  experience:
+    - title: "Software Engineer"
+      company: "Robert Bosch S.p.a."
+      description: |
+        I am a dedicated Backend Developer with experience in Java, Python, Microservices, and Cloud Computing.
+  education:
+    - title: "Bachelor degree"
+      institution: ""
+      grade: 100
