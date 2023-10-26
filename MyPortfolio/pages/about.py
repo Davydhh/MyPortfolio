@@ -57,13 +57,16 @@ class About(rx.Vstack):
                             ),
                             rx.tab_panels(
                                 rx.tab_panel(
-                                    rx.text("My Story")
+                                    rx.text(configuration["about_page"]["my_story"]),
+                                    max_w="600px"
                                 ),
                                 rx.tab_panel(
-                                    rx.text("Experience")
+                                    rx.text("Experience"),
+                                    max_w="600px"
                                 ),
                                 rx.tab_panel(
-                                    rx.text("Education")
+                                    rx.text("Education"),
+                                    max_w="600px"
                                 )
                             ),
                             variant="unstyled",
@@ -75,6 +78,8 @@ class About(rx.Vstack):
                     align_items="stretch"
                 ),
                 spacing="3rem",
-                justify_content="center"
+                justify_content="center",
+                margin_left="1.5rem",
+                margin_right="1.5rem"
             )
         )
