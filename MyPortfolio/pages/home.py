@@ -2,7 +2,7 @@ import os
 import reflex as rx
 
 from ..style import style, wave
-from ..utilities.utility import create_badge, create_breadcrumb_item, create_stach_image, create_xs_heading, project_image_desktop, project_image_mobile
+from ..utilities.utility import create_badge, create_breadcrumb_item, create_stach_image, create_xs_heading, project_image_desktop, project_image_mobile, create_text_with_left_image
 from ..utilities.yaml_reader import read_yaml
 
 configuration = read_yaml(os.getcwd() + "/configuration.yaml")
@@ -13,6 +13,8 @@ class Home(rx.Vstack):
     card_titles: list = page_configuration["card_titles"]
     workout_project = configuration["projects"][0]
     covid_project = configuration["projects"][1]
+    location_contact = configuration["contact_block"][0]
+    mail_contact = configuration["contact_block"][1]
 
     images_paths: list = ["/java.png", "/python.png",
                           "/spring-boot.png", "/postgresql.png", "/mongodb.png"]
@@ -110,7 +112,7 @@ class Home(rx.Vstack):
                     ),
                     max_w="350px"
                 ),
-                margin_top="12rem",
+                margin_top="13rem",
                 spacing="3rem",
                 padding=["0 1.5rem"]
             ),
@@ -237,7 +239,7 @@ class Home(rx.Vstack):
                                                self.covid_project["github"], self.covid_project["live_demo"], self.covid_project["image_path"], self.covid_project["period"], image_left=False),
                     spacing="4rem"
                 ),
-                margin_top="12rem",
+                margin_top="13rem",
                 padding=["0 1.5rem"],
                 spacing="3rem",
                 align_items="stretch"
@@ -408,7 +410,7 @@ class Home(rx.Vstack):
             rx.vstack(
                 rx.vstack(
                     rx.heading(
-                        "CONTACT",
+                        self.page_configuration["contact"],
                         size="sm",
                         font_weight="900",
                         _dark={
@@ -417,33 +419,17 @@ class Home(rx.Vstack):
                         }
                     ),
                     rx.heading(
-                        "Hit me up! 👇",
+                        self.page_configuration["contact_description"],
                         size="md"
                     ),
                     spacing="1.5rem"
                 ),
                 rx.hstack(
-                    rx.hstack(
-                        rx.image(
-                            src="/location.svg",
-                            html_width="28px",
-                            html_height="28px",
-                            _dark={"filter": "brightness(0) invert(1)"}
-                        ),
-                        rx.text("Milan, Italy")
-                    ),
-                    rx.hstack(
-                        rx.image(
-                            src="/mail.svg",
-                            html_width="28px",
-                            html_height="28px",
-                            _dark={"filter": "brightness(0) invert(1)"}
-                        ),
-                        rx.text("davidepro@hotmail.it")
-                    ),
+                    create_text_with_left_image(self.location_contact["link"],self.location_contact["image_path"]),
+                    create_text_with_left_image(self.mail_contact["link"],self.mail_contact["image_path"]),
                     spacing="5rem"
                 ),
-                margin_top="12rem",
+                margin_top="13rem",
                 padding=["0 1.5rem"],
                 spacing="3rem",
                 align_items="stretch"

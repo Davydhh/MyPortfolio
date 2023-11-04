@@ -34,6 +34,8 @@ content_page:
   hello: "Hi - I'm Davide"
   projects: "PROJECTS"
   projects_introduction: "An iOS app and an Android app 📱"
+  contact: "CONTACT"
+  contact_description: "Hit me up! 👇"
 
 contacts:
   - name: "LinkedIn"
@@ -42,6 +44,14 @@ contacts:
   - name: "GitHub"
     link: "https://github.com/Davydhh"
     image_path: "/github.jpg"
+
+contact_block:
+  - name: "Mail"
+    link: "davidepro@hotmail.it"
+    image_path: "/mail.svg"
+  - name: "Location"
+    link: "Milan, Italy"
+    image_path: "/location.svg"
 
 footer:
   copyright: "Copyright © 2023. All rights reserved"

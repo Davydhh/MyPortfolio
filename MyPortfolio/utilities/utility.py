@@ -94,3 +94,15 @@ def project_image_mobile(path: str):
         border_radius="15px 15px",
         transition="all 300ms ease"
     )
+
+
+def create_text_with_left_image(text: str, icon_path: str):
+    return rx.hstack(
+        rx.image(
+            src=icon_path,
+            html_width="28px",
+            html_height="28px",
+            _dark={"filter": "brightness(0) invert(1)"}
+        ),
+        rx.text(text)
+    )
