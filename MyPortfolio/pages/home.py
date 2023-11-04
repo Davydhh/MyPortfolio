@@ -30,7 +30,8 @@ class Home(rx.Vstack):
             self.about_me_block_desktop(),
             self.about_me_block_mobile(),
             self.projects_block_desktop(),
-            self.projects_block_mobile()
+            self.projects_block_mobile(),
+            self.contact_block_desktop()
         ]
 
     def about_me_block_mobile(self):
@@ -70,7 +71,8 @@ class Home(rx.Vstack):
                 ),
                 margin_top="11rem",
                 padding=["0 1.5rem"]
-            )
+            ),
+            id="about"
         )
 
     def about_me_block_desktop(self):
@@ -108,10 +110,11 @@ class Home(rx.Vstack):
                     ),
                     max_w="350px"
                 ),
-                margin_top="15rem",
+                margin_top="12rem",
                 spacing="3rem",
                 padding=["0 1.5rem"]
-            )
+            ),
+            id="about"
         )
 
     def tech_stack_mobile(self):
@@ -119,7 +122,7 @@ class Home(rx.Vstack):
             rx.hstack(
                 rx.heading(
                     self.page_configuration["tech_stack"],
-                    size="1rem",
+                    size="md",
                     transition="all 300ms ease"
                 ),
                 rx.divider(
@@ -225,43 +228,52 @@ class Home(rx.Vstack):
                     ),
                     spacing="1.5rem",
                     align_items="left",
-                    justify_content="left",
+                    justify_content="left"
                 ),
                 rx.vstack(
                     self.project_block_desktop(self.workout_project["name"], self.workout_project["description"], self.workout_project["technologies"],
-                                               self.workout_project["github"], self.workout_project["live_demo"], self.workout_project["image_path"]),
+                                               self.workout_project["github"], self.workout_project["live_demo"], self.workout_project["image_path"], self.workout_project["period"]),
                     self.project_block_desktop(self.covid_project["name"], self.covid_project["description"], self.covid_project["technologies"],
-                                               self.covid_project["github"], self.covid_project["live_demo"], self.covid_project["image_path"], image_left=False),
+                                               self.covid_project["github"], self.covid_project["live_demo"], self.covid_project["image_path"], self.covid_project["period"], image_left=False),
                     spacing="4rem"
                 ),
-                margin_top="15rem",
+                margin_top="12rem",
                 padding=["0 1.5rem"],
                 spacing="3rem",
                 align_items="stretch"
-            )
+            ),
+            id="projects"
         )
 
-    def project_block_desktop(self, title: str, description: str, stack: list, github_link: str, demo_link: str, image_path: str, image_left: bool = True):
+    def project_block_desktop(self, title: str, description: str, stack: list, github_link: str, demo_link: str, image_path: str, period: str, image_left: bool = True):
         if image_left:
             return rx.hstack(
                 project_image_desktop(image_path),
                 self.project_description_desktop(
-                    title, description, stack, github_link, demo_link),
+                    title, description, stack, github_link, demo_link, period),
                 spacing="4rem"
             )
         else:
             return rx.hstack(
                 self.project_description_desktop(
-                    title, description, stack, github_link, demo_link),
+                    title, description, stack, github_link, demo_link, period),
                 project_image_desktop(image_path),
                 spacing="4rem"
             )
 
-    def project_description_desktop(self, title: str, description: str, stack: list, github_link: str, demo_link: str):
+    def project_description_desktop(self, title: str, description: str, stack: list, github_link: str, demo_link: str, period: str):
         return rx.vstack(
-            rx.heading(
-                title,
-                size="sm"
+            rx.vstack(
+                rx.heading(
+                    title,
+                    size="sm"
+                ),
+                rx.heading(
+                    period,
+                    size="xs",
+                    color="gray"
+                ),
+                spacing="0.5rem"
             ),
             rx.text(
                 description,
@@ -339,7 +351,8 @@ class Home(rx.Vstack):
                 padding=["0 1.5rem"],
                 spacing="3rem",
                 align_items="stretch"
-            )
+            ),
+            id="projects"
         )
 
     def project_block_mobile(self, title: str, description: str, stack: list, github_link: str, demo_link: str, image_path: str):
@@ -363,8 +376,7 @@ class Home(rx.Vstack):
                     rx.image(
                         src="/github.png",
                         width="20px",
-                        _dark={
-                            "filter": "brightness(0) invert(1)"},
+                        _dark={"filter": "brightness(0) invert(1)"},
                         transition="all 300ms ease"
                     ),
                     href=github_link
@@ -389,4 +401,52 @@ class Home(rx.Vstack):
             ),
             max_w="340px",
             spacing="1rem"
+        )
+
+    def contact_block_desktop(self):
+        return rx.tablet_and_desktop(
+            rx.vstack(
+                rx.vstack(
+                    rx.heading(
+                        "CONTACT",
+                        size="sm",
+                        font_weight="900",
+                        _dark={
+                            "background": "linear-gradient(to right, #e1e1e1, #757575)",
+                            "background_clip": "text"
+                        }
+                    ),
+                    rx.heading(
+                        "Hit me up! 👇",
+                        size="md"
+                    ),
+                    spacing="1.5rem"
+                ),
+                rx.hstack(
+                    rx.hstack(
+                        rx.image(
+                            src="/location.svg",
+                            html_width="28px",
+                            html_height="28px",
+                            _dark={"filter": "brightness(0) invert(1)"}
+                        ),
+                        rx.text("Milan, Italy")
+                    ),
+                    rx.hstack(
+                        rx.image(
+                            src="/mail.svg",
+                            html_width="28px",
+                            html_height="28px",
+                            _dark={"filter": "brightness(0) invert(1)"}
+                        ),
+                        rx.text("davidepro@hotmail.it")
+                    ),
+                    spacing="5rem"
+                ),
+                margin_top="12rem",
+                padding=["0 1.5rem"],
+                spacing="3rem",
+                align_items="stretch"
+            ),
+            id="contact"
         )

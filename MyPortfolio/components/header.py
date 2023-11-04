@@ -16,9 +16,9 @@ class Header(rx.Hstack):
             rx.spacer(),
             rx.tablet_and_desktop(
                 create_header_button("Home", "/"),
-                create_header_button("About", "/about"),
-                create_header_button("Projects", "/projects"),
-                create_header_button("Contact", "/contact")
+                create_header_button("About", "#about"),
+                create_header_button("Projects", "#projects"),
+                create_header_button("Contact", "#contact")
             ),
             rx.color_mode_button(
                 rx.color_mode_icon(),
@@ -35,9 +35,9 @@ class Header(rx.Hstack):
                         padding_left="0.8rem"
                     ),
                     rx.menu_list(
-                        create_menu_item("Home", "/"),
-                        create_menu_item("About", "/about"),
-                        create_menu_item("Projects", "/projects"),
+                        create_menu_item("Home", "#landing"),
+                        create_menu_item("About", "#about"),
+                        create_menu_item("Projects", "#projects"),
                         create_menu_item("Contact", "/contact"),
                         style=style.get("app")
                     ),

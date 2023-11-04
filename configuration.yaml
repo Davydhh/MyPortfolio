@@ -1,5 +1,6 @@
 projects:
   - name: "WORKOUT TRACKER 🏋🏻"
+    period: "July 2022"
     description: |
       WorkoutTracker is a Fitness App that uses Augmented Reality and Computer Vision to track repetitions of exercises for you. It also memorizes the order of exercises and provides reminders for the next exercise.
     technologies:
@@ -11,6 +12,7 @@ projects:
     image_path: "/workout.jpg"
 
   - name: "COVID-19 TRACKER 🦠"
+    period: "February 2020"
     description: |
       My COVID-19 Tracker Android app provides real-time information about the spread of COVID-19 in Italy. The app offers data at the national, regional, and city levels, allowing users to stay informed about the latest statistics and trends.
     technologies:

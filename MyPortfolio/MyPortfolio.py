@@ -12,15 +12,6 @@ def build_page(body: rx.Vstack):
 
     return rx.vstack(
         navbar,
-        rx.text(
-            "Site still under development",
-            color="gray",
-            font_size="0.8rem",
-            padding_top="55px",
-            padding_left="0.5rem",
-            padding_right="0.5rem",
-            text_align="center"
-        ),
         body,
         footer_ui,
         style=style.get("main")
@@ -39,5 +30,5 @@ def about_page() -> rx.Component:
 # Add state and page to the app.
 app = rx.App(style=style.get("app"))
 app.add_page(home_page, route="/", title="Davide.dev")
-app.add_page(about_page, route="/about", title="Davide.dev")
+# app.add_page(about_page, route="/about", title="Davide.dev")
 app.compile()
