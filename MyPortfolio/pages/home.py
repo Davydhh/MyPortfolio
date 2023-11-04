@@ -33,7 +33,8 @@ class Home(rx.Vstack):
             self.about_me_block_mobile(),
             self.projects_block_desktop(),
             self.projects_block_mobile(),
-            self.contact_block_desktop()
+            self.contact_block_desktop(),
+            self.contact_block_mobile()
         ]
 
     def about_me_block_mobile(self):
@@ -74,7 +75,7 @@ class Home(rx.Vstack):
                 margin_top="11rem",
                 padding=["0 1.5rem"]
             ),
-            id="about"
+            id="about_mobile"
         )
 
     def about_me_block_desktop(self):
@@ -354,7 +355,7 @@ class Home(rx.Vstack):
                 spacing="3rem",
                 align_items="stretch"
             ),
-            id="projects"
+            id="projects_mobile"
         )
 
     def project_block_mobile(self, title: str, description: str, stack: list, github_link: str, demo_link: str, image_path: str):
@@ -435,4 +436,36 @@ class Home(rx.Vstack):
                 align_items="stretch"
             ),
             id="contact"
+        )
+
+    def contact_block_mobile(self):
+        return rx.mobile_only(
+            rx.vstack(
+                rx.vstack(
+                    rx.heading(
+                        self.page_configuration["contact"],
+                        size="sm",
+                        font_weight="900",
+                        _dark={
+                            "background": "linear-gradient(to right, #e1e1e1, #757575)",
+                            "background_clip": "text"
+                        }
+                    ),
+                    rx.heading(
+                        self.page_configuration["contact_description"],
+                        size="md"
+                    ),
+                    spacing="1.5rem"
+                ),
+                rx.vstack(
+                    create_text_with_left_image(self.location_contact["link"],self.location_contact["image_path"]),
+                    create_text_with_left_image(self.mail_contact["link"],self.mail_contact["image_path"]),
+                    spacing="3rem"
+                ),
+                margin_top="13rem",
+                padding=["0 1.5rem"],
+                spacing="3rem",
+                align_items="stretch"
+            ),
+            id="contact_mobile"
         )

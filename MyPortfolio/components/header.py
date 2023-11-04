@@ -35,10 +35,10 @@ class Header(rx.Hstack):
                         padding_left="0.8rem"
                     ),
                     rx.menu_list(
-                        create_menu_item("Home", "#landing"),
-                        create_menu_item("About", "#about"),
-                        create_menu_item("Projects", "#projects"),
-                        create_menu_item("Contact", "/contact"),
+                        create_menu_item("Home", "/"),
+                        create_menu_item("About", "#about_mobile"),
+                        create_menu_item("Projects", "#projects_mobile"),
+                        create_menu_item("Contact", "#contact_mobile"),
                         style=style.get("app")
                     ),
                     auto_select=False
