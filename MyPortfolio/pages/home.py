@@ -48,6 +48,9 @@ class Home(rx.Vstack):
                         _dark={
                             "background": "linear-gradient(to right, #e1e1e1, #757575)",
                             "background_clip": "text"
+                        },
+                        _light={
+                            "color": "#0277BD"
                         }
                     ),
                     rx.heading(
@@ -98,6 +101,9 @@ class Home(rx.Vstack):
                             _dark={
                                 "background": "linear-gradient(to right, #e1e1e1, #757575)",
                                 "background_clip": "text"
+                            },
+                            _light={
+                                "color": "#0277BD"
                             }
                         ),
                         rx.heading(
@@ -223,6 +229,9 @@ class Home(rx.Vstack):
                         _dark={
                             "background": "linear-gradient(to right, #e1e1e1, #757575)",
                             "background_clip": "text"
+                        },
+                        _light={
+                            "color": "#0277BD"
                         }
                     ),
                     rx.heading(
@@ -333,6 +342,9 @@ class Home(rx.Vstack):
                         _dark={
                             "background": "linear-gradient(to right, #e1e1e1, #757575)",
                             "background_clip": "text"
+                        },
+                        _light={
+                            "color": "#0277BD"
                         }
                     ),
                     rx.heading(
@@ -417,6 +429,9 @@ class Home(rx.Vstack):
                         _dark={
                             "background": "linear-gradient(to right, #e1e1e1, #757575)",
                             "background_clip": "text"
+                        },
+                        _light={
+                            "color": "#0277BD"
                         }
                     ),
                     rx.heading(
@@ -426,8 +441,10 @@ class Home(rx.Vstack):
                     spacing="1.5rem"
                 ),
                 rx.hstack(
-                    create_text_with_left_image(self.location_contact["link"],self.location_contact["image_path"]),
-                    create_text_with_left_image(self.mail_contact["link"],self.mail_contact["image_path"]),
+                    create_text_with_left_image(
+                        self.location_contact["link"], self.location_contact["image_path"]),
+                    create_text_with_left_image(
+                        self.mail_contact["link"], self.mail_contact["image_path"]),
                     spacing="5rem"
                 ),
                 margin_top="13rem",
@@ -449,6 +466,9 @@ class Home(rx.Vstack):
                         _dark={
                             "background": "linear-gradient(to right, #e1e1e1, #757575)",
                             "background_clip": "text"
+                        },
+                        _light={
+                            "color": "#0277BD"
                         }
                     ),
                     rx.heading(
@@ -458,8 +478,10 @@ class Home(rx.Vstack):
                     spacing="1.5rem"
                 ),
                 rx.vstack(
-                    create_text_with_left_image(self.location_contact["link"],self.location_contact["image_path"]),
-                    create_text_with_left_image(self.mail_contact["link"],self.mail_contact["image_path"]),
+                    create_text_with_left_image(
+                        self.location_contact["link"], self.location_contact["image_path"]),
+                    create_text_with_left_image(
+                        self.mail_contact["link"], self.mail_contact["image_path"]),
                     spacing="3rem"
                 ),
                 margin_top="13rem",
