@@ -45,13 +45,7 @@ class Home(rx.Vstack):
                         self.page_configuration["about_me"],
                         size="sm",
                         font_weight="900",
-                        _dark={
-                            "background": "linear-gradient(to right, #e1e1e1, #757575)",
-                            "background_clip": "text"
-                        },
-                        _light={
-                            "color": "#0277BD"
-                        }
+                        style=style.get("title")
                     ),
                     rx.heading(
                         self.page_configuration["short_description"],
@@ -98,13 +92,7 @@ class Home(rx.Vstack):
                             self.page_configuration["about_me"],
                             size="sm",
                             font_weight="900",
-                            _dark={
-                                "background": "linear-gradient(to right, #e1e1e1, #757575)",
-                                "background_clip": "text"
-                            },
-                            _light={
-                                "color": "#0277BD"
-                            }
+                            style=style.get("title")
                         ),
                         rx.heading(
                             self.page_configuration["short_description"],
@@ -226,13 +214,7 @@ class Home(rx.Vstack):
                         self.page_configuration["projects"],
                         size="sm",
                         font_weight="900",
-                        _dark={
-                            "background": "linear-gradient(to right, #e1e1e1, #757575)",
-                            "background_clip": "text"
-                        },
-                        _light={
-                            "color": "#0277BD"
-                        }
+                        style=style.get("title")
                     ),
                     rx.heading(
                         self.page_configuration["projects_introduction"],
@@ -339,13 +321,7 @@ class Home(rx.Vstack):
                         self.page_configuration["projects"],
                         size="sm",
                         font_weight="900",
-                        _dark={
-                            "background": "linear-gradient(to right, #e1e1e1, #757575)",
-                            "background_clip": "text"
-                        },
-                        _light={
-                            "color": "#0277BD"
-                        }
+                        style=style.get("title")
                     ),
                     rx.heading(
                         self.page_configuration["projects_introduction"],
@@ -426,13 +402,7 @@ class Home(rx.Vstack):
                         self.page_configuration["contact"],
                         size="sm",
                         font_weight="900",
-                        _dark={
-                            "background": "linear-gradient(to right, #e1e1e1, #757575)",
-                            "background_clip": "text"
-                        },
-                        _light={
-                            "color": "#0277BD"
-                        }
+                        style=style.get("title")
                     ),
                     rx.heading(
                         self.page_configuration["contact_description"],
@@ -463,13 +433,7 @@ class Home(rx.Vstack):
                         self.page_configuration["contact"],
                         size="sm",
                         font_weight="900",
-                        _dark={
-                            "background": "linear-gradient(to right, #e1e1e1, #757575)",
-                            "background_clip": "text"
-                        },
-                        _light={
-                            "color": "#0277BD"
-                        }
+                        style=style.get("title")
                     ),
                     rx.heading(
                         self.page_configuration["contact_description"],

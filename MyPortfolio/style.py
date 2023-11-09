@@ -77,6 +77,15 @@ style: dict = {
             "0 4em",
             "0 10rem"
         ]
+    },
+    "title": {
+        "_dark": {
+            "background": "linear-gradient(to right, #e1e1e1, #757575)",
+            "background_clip": "text"
+        },
+        "_light": {
+            "color": "#0277BD"
+        }
     }
 }
 
