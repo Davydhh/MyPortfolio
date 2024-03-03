@@ -86,7 +86,8 @@ def about_me_block_desktop():
                     ),
                     rx.text(
                         page_configuration["medium_description"],
-                        font_size=["0.75rem", "0.75rem", "1rem", "1rem", "1rem"],
+                        font_size=["0.75rem", "0.75rem",
+                                   "1rem", "1rem", "1rem"],
                     ),
                     justify_content="left",
                     align_items="start"
@@ -222,14 +223,14 @@ def projects_block_desktop():
                 rx.heading(
                     page_configuration["projects"],
                     font_size=["1rem", "1rem",
-                                   "1.25rem", "1.5rem", "1.5rem"],
+                               "1.25rem", "1.5rem", "1.5rem"],
                     font_weight="900",
                     style=style.get("title")
                 ),
                 rx.heading(
                     page_configuration["projects_introduction"],
                     font_size=["0.75rem", "0.75rem",
-                                   "1rem", "1.25rem", "1.25rem"]
+                               "1rem", "1.25rem", "1.25rem"]
                 ),
                 spacing="5",
                 align="start",
@@ -259,16 +260,14 @@ def project_block_desktop(title: str, description: str, stack: list, github_link
             project_image_desktop(image_path),
             project_description_desktop(
                 title, description, stack, github_link, demo_link, period),
-            spacing="9",
-            wrap="wrap"
+            spacing="9"
         )
     else:
         return rx.hstack(
             project_description_desktop(
                 title, description, stack, github_link, demo_link, period),
             project_image_desktop(image_path),
-            spacing="9",
-            wrap="wrap"
+            spacing="9"
         )
 
 
@@ -419,14 +418,14 @@ def contact_block_desktop():
                 rx.heading(
                     page_configuration["contact"],
                     font_size=["1rem", "1rem",
-                                   "1.25rem", "1.5rem", "1.5rem"],
+                               "1.25rem", "1.5rem", "1.5rem"],
                     font_weight="900",
                     style=style.get("title")
                 ),
                 rx.heading(
                     page_configuration["contact_description"],
                     font_size=["1rem", "1rem",
-                                   "1.25rem", "1.25rem", "1.25rem"]
+                               "1.25rem", "1.25rem", "1.25rem"]
                 ),
                 spacing="4"
             ),
