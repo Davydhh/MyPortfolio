@@ -2,33 +2,24 @@ from rxconfig import config
 
 import reflex as rx
 from .components import header, footer
-from .pages import home, about
+from MyPortfolio.pages import home, about
 from .style import style
 
 
-def build_page(body: rx.Vstack):
-    navbar: rx.Hstack = header.Header()
-    footer_ui: rx.Hstack = footer.Footer()
-
+@rx.page(route="/", title="Davide.dev")
+def home_page() -> rx.Component:
     return rx.vstack(
-        navbar,
-        body,
-        footer_ui,
+        header.render_header(),
+        home.render_page(),
+        footer.Footer(),
         style=style.get("main")
     )
 
 
-def home_page() -> rx.Component:
-    body: rx.Vstack = home.Home()
-    return build_page(body)
-
-def about_page() -> rx.Component:
-    body: rx.Vstack = about.About()
-    return build_page(body)
-
-
-# Add state and page to the app.
-app = rx.App(style=style.get("app"))
-app.add_page(home_page, route="/", title="Davide.dev")
-# app.add_page(about_page, route="/about", title="Davide.dev")
-app.compile()
+app = rx.App(
+    style=style.get("app"),
+    theme=rx.theme(
+        appearance="dark",
+        accent_color="gray"
+    )
+)

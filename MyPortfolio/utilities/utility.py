@@ -3,11 +3,10 @@ from ..style import style
 
 
 def create_menu_item(title: str, ref: str):
-    return rx.menu_item(
+    return rx.menu.item(
         rx.link(
             title,
-            href=ref,
-            style=style.get("header_buttons")
+            href=ref
         ),
         style=style.get("app")
     )
@@ -15,19 +14,22 @@ def create_menu_item(title: str, ref: str):
 
 def create_header_button(title: str, ref: str):
     return rx.link(
-        rx.button(
-            title,
-            color_scheme="none",
-            style=style.get("header_buttons")
-        ),
+        title,
+        weight="bold",
+        color="white",
         href=ref
     )
 
 
 def create_badge(title):
-    return rx.badge(
+    return rx.text(
         title,
-        variant="solid",
+        bg="#505A6A",
+        border_radius="5px",
+        weight="bold",
+        font_size=["12px", "12px", "14px", "14px", "14px"],
+        transition="all 300ms ease",
+        wrap="wrap",
         padding=[
             "0.15rem 0.35rem",
             "0.15rem 0.35rem",
@@ -39,15 +41,15 @@ def create_badge(title):
 
 
 def create_breadcrumb_item(path: str, title: str, url: str):
-    return rx.breadcrumb_item(
-        rx.hstack(
-            rx.image(
+    return rx.chakra.breadcrumb_item(
+        rx.chakra.hstack(
+            rx.chakra.image(
                 src=path,
                 html_width="20px",
                 html_height="20px",
                 _dark={"filter": "brightness(0) invert(1)"},
             ),
-            rx.breadcrumb_link(
+            rx.chakra.breadcrumb_link(
                 title,
                 href=url,
                 _dark={"color": "rgba(255, 255, 255, 0.7)"},
@@ -69,14 +71,14 @@ def create_stach_image(path: str):
 def create_xs_heading(title: str):
     return rx.heading(
         title,
-        size="xs"
+        size="2"
     )
 
 
 def project_image_desktop(path: str):
     return rx.image(
         src=path,
-        width=["200px", "250px", "350px", "350px", "350px"],
+        width=["200px", "250px", "350px", "400px", "400px"],
         height="auto",
         box_shadow="xl",
         border_radius="15px 15px",
@@ -100,9 +102,9 @@ def create_text_with_left_image(text: str, icon_path: str):
     return rx.hstack(
         rx.image(
             src=icon_path,
-            html_width="28px",
-            html_height="28px",
-            _dark={"filter": "brightness(0) invert(1)"}
+            width="28px",
+            height="28px",
+            filter="brightness(0) invert(1)"
         ),
         rx.text(text)
     )

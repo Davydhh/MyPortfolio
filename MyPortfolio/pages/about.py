@@ -6,7 +6,7 @@ from ..utilities.yaml_reader import read_yaml
 configuration = read_yaml(os.getcwd() + "/configuration.yaml")
 
 
-class About(rx.Vstack):
+class About(rx.chakra.Vstack):
     def __init__(self):
         super().__init__(style=style.get("about"))
 
@@ -16,8 +16,8 @@ class About(rx.Vstack):
 
     def block_desktop(self):
         return rx.tablet_and_desktop(
-            rx.vstack(
-                rx.heading(
+            rx.chakra.vstack(
+                rx.chakra.heading(
                     configuration["content_page"]["about_me"],
                     size="3xl",
                     transition="all 300ms ease",
@@ -27,8 +27,8 @@ class About(rx.Vstack):
                         "background_clip": "text"
                     }
                 ),
-                rx.hstack(
-                    rx.image(
+                rx.chakra.hstack(
+                    rx.chakra.image(
                         src="/me.jpg",
                         width=["180px", "200px", "220px", "250px", "250px"],
                         height="auto",
@@ -36,36 +36,36 @@ class About(rx.Vstack):
                         border_radius="10px 10px",
                         transition="all 300ms ease"
                     ),
-                    rx.vstack(
-                        rx.tabs(
-                            rx.tab_list(
-                                rx.tab(
+                    rx.chakra.vstack(
+                        rx.chakra.tabs(
+                            rx.chakra.tab_list(
+                                rx.chakra.tab(
                                     "MY STORY",
                                     _selected={"_dark": {"color": "white"}, "_light": {
                                         "color": "black"}},
                                     color="gray",
                                     mr="10"),
-                                rx.tab("EXPERIENCE",
+                                rx.chakra.tab("EXPERIENCE",
                                        _selected={"_dark": {"color": "white"}, "_light": {
                                            "color": "black"}},
                                        color="gray",
                                        mr="10"),
-                                rx.tab("EDUCATION",
+                                rx.chakra.tab("EDUCATION",
                                        _selected={"_dark": {"color": "white"}, "_light": {
                                            "color": "black"}},
                                        color="gray")
                             ),
-                            rx.tab_panels(
-                                rx.tab_panel(
-                                    rx.text(configuration["about_page"]["my_story"]),
+                            rx.chakra.tab_panels(
+                                rx.chakra.tab_panel(
+                                    rx.chakra.text(configuration["about_page"]["my_story"]),
                                     max_w="600px"
                                 ),
-                                rx.tab_panel(
-                                    rx.text("Experience"),
+                                rx.chakra.tab_panel(
+                                    rx.chakra.text("Experience"),
                                     max_w="600px"
                                 ),
-                                rx.tab_panel(
-                                    rx.text("Education"),
+                                rx.chakra.tab_panel(
+                                    rx.chakra.text("Education"),
                                     max_w="600px"
                                 )
                             ),

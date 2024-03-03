@@ -1,22 +1,11 @@
 style: dict = {
     "app": {
-        "_dark": {
-            "bg": "#1f2028",
-        },
-        "_light": {
-            "bg": "#fafafa",
-        }
+        "bg": "#1f2028",
     },
     "main": {
         "width": "100%",
-        "_dark": {
-            "background": "radial-gradient(circle, rgba(255, 255, 255, 0.09) 1px, transparent 1px)",
-            "background_size": "25px 25px"
-        },
-        "_light": {
-            "background": "radial-gradient(circle, rgba(0, 0, 0, 0.09) 1px, transparent 1px)",
-            "background_size": "25px 25px"
-        },
+        "background": "radial-gradient(circle, rgba(255, 255, 255, 0.09) 1px, transparent 1px)",
+        "background_size": "25px 25px",
         "@keyframes dots": {
             "0%": {"background_position": "0 0"},
             "100%": {"background_position": "40px 40px"}
@@ -24,8 +13,7 @@ style: dict = {
         "animation": "dots 4s linear infinite alternate-reverse both"
     },
     "header": {
-        "_dark": {"bg": "#141518"},
-        "_light": {"bg": "#ffffff"},
+        "bg": "#141518",
         "width": "100%",
         "height": "50px",
         "position": "fixed",
@@ -79,13 +67,9 @@ style: dict = {
         ]
     },
     "title": {
-        "_dark": {
-            "background": "linear-gradient(to right, #e1e1e1, #757575)",
-            "background_clip": "text"
-        },
-        "_light": {
-            "color": "#0277BD"
-        }
+        "background_image": "linear-gradient(to right, #e1e1e1, #757575)",
+        "background_clip": "text",
+        "color": "transparent"
     }
 }
 

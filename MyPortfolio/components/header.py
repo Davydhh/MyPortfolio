@@ -7,41 +7,41 @@ from MyPortfolio.utilities.yaml_reader import read_yaml
 configuration = read_yaml(os.getcwd() + "/configuration.yaml")
 
 
-class Header(rx.Hstack):
-
-    def __init__(self):
-        super().__init__(style=style.get("header"))
-        self.children = [
-            rx.heading(configuration["header"]["title"], size="md"),
-            rx.spacer(),
-            rx.tablet_and_desktop(
+def render_header():
+    return rx.hstack(
+        rx.heading(configuration["header"]["title"], size="5"),
+        rx.spacer(),
+        rx.tablet_and_desktop(
+            rx.hstack(
                 create_header_button("Home", "/"),
                 create_header_button("About", "#about"),
                 create_header_button("Projects", "#projects"),
-                create_header_button("Contact", "#contact")
-            ),
-            rx.color_mode_button(
-                rx.color_mode_icon(),
-                color_scheme="none",
-                _dark={"color": "white"},
-                _light={"color": "black"},
-            ),
-            rx.mobile_only(
-                rx.menu(
-                    rx.menu_button(
-                        rx.icon(tag="hamburger"),
-                        color_scheme="none",
-                        _dark={"filter": "brightness(0) invert(1)"},
-                        padding_left="0.8rem"
-                    ),
-                    rx.menu_list(
-                        create_menu_item("Home", "/"),
-                        create_menu_item("About", "#about_mobile"),
-                        create_menu_item("Projects", "#projects_mobile"),
-                        create_menu_item("Contact", "#contact_mobile"),
-                        style=style.get("app")
-                    ),
-                    auto_select=False
-                )
+                create_header_button("Contact", "#contact"),
+                spacing="5"
             )
-        ]
+        ),
+        rx.mobile_only(
+            rx.menu.root(
+                rx.menu.trigger(
+                    rx.icon(
+                        tag="menu",
+                        stroke_width=2,
+                        size=20,
+                        filter="brightness(0) invert(1)"
+                    )
+                ),
+                rx.menu.content(
+                    create_menu_item("Home", "/"),
+                    create_menu_item("About", "#about_mobile"),
+                    create_menu_item("Projects", "#projects_mobile"),
+                    create_menu_item("Contact", "#contact_mobile"),
+                    style=style.get("app")
+                ),
+                align="center"
+            )
+        ),
+        align="center",
+        style=style.get("header")
+    )
+
+
