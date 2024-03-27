@@ -2,7 +2,7 @@ import os
 import reflex as rx
 
 from ..style import style, wave
-from ..utilities.utility import create_badge, create_breadcrumb_item, create_stach_image, create_xs_heading, project_image_desktop, project_image_mobile, create_text_with_left_image
+from ..utilities.utility import create_badge, create_breadcrumb_item, create_stach_image, create_xs_heading, project_image_desktop, project_image_mobile, create_text_with_left_image, create_badge_mobile, create_stach_image_mobile
 from ..utilities.yaml_reader import read_yaml
 
 configuration = read_yaml(os.getcwd() + "/configuration.yaml")
@@ -25,7 +25,7 @@ def about_me_block_mobile():
             rx.vstack(
                 rx.heading(
                     page_configuration["about_me"],
-                    size="3",
+                    size="5",
                     font_weight="900",
                     style=style.get("title")
                 ),
@@ -47,7 +47,7 @@ def about_me_block_mobile():
                     text_align="justify",
                     max_w="90vw"
                 ),
-                spacing="2",
+                spacing="3",
                 align_items="center",
                 justify_content="center"
             ),
@@ -107,24 +107,19 @@ def about_me_block_desktop():
 
 def tech_stack_mobile():
     return rx.mobile_only(
-        rx.hstack(
+        rx.vstack(
             rx.heading(
                 page_configuration["tech_stack"],
-                size="3"
-            ),
-            rx.divider(
-                orientation="vertical",
-                height="2em",
-                border_color="rgba(255, 255, 255, 0.7)",
-                _light={"border_color": "black"}
+                size="5"
             ),
             rx.hstack(
-                *[create_stach_image(path) for path in images_paths],
-                spacing="4"
+                *[create_stach_image_mobile(path) for path in images_paths],
+                spacing='6',
+                width="100%"
             ),
-            spacing="4",
+            spacing="6",
             margin_top="10rem",
-            padding="1rem 1.5rem",
+            padding="1rem 0",
             align="center",
             justify="center"
         )
@@ -172,7 +167,7 @@ def breadcrumb_block():
 def card_block_mobile():
     return rx.mobile_only(
         rx.vstack(
-            *[create_badge(card_title) for card_title in card_titles],
+            *[create_badge_mobile(card_title) for card_title in card_titles],
             spacing="5",
             margin_top="1rem",
             margin_bottom="1rem",
@@ -197,7 +192,7 @@ def landing_block():
     return rx.hstack(
         rx.heading(
             page_configuration["hello"],
-            font_size=["35px", "40px", "45px", "50px", "50px"],
+            font_size=["40px", "40px", "45px", "50px", "50px"],
             transition="all 300ms ease",
             font_weight="900",
             background_image="linear-gradient(to right, #e1e1e1, #757575)",
@@ -277,7 +272,7 @@ def projects_block_mobile():
             rx.vstack(
                 rx.heading(
                     page_configuration["projects"],
-                    size="3",
+                    size="5",
                     font_weight="900",
                     style=style.get("title")
                 ),
@@ -285,7 +280,7 @@ def projects_block_mobile():
                     page_configuration["projects_introduction"],
                     size="5"
                 ),
-                spacing="2",
+                spacing="3",
                 align="start",
                 justify="start"
             ),
@@ -316,7 +311,7 @@ def project_block_mobile(title: str, description: str, stack: list, github_link:
         rx.text(
             description,
             size="3",
-            text_align="center"
+            text_align="justify"
         ),
         rx.hstack(
             rx.foreach(stack, create_xs_heading),
@@ -451,7 +446,7 @@ def contact_block_mobile():
             rx.vstack(
                 rx.heading(
                     page_configuration["contact"],
-                    size="3",
+                    size="5",
                     font_weight="900",
                     style=style.get("title")
                 ),
