@@ -73,7 +73,7 @@ def about_me_block_desktop():
                 rx.vstack(
                     rx.heading(
                         page_configuration["about_me"],
-                        font_size=["1rem", "1rem",
+                        font_size=["1rem", "1.25rem",
                                    "1.25rem", "1.5rem", "1.5rem"],
                         font_weight="900",
                         style=style.get("title"),
@@ -224,7 +224,7 @@ def projects_block_desktop():
             rx.vstack(
                 rx.heading(
                     page_configuration["projects"],
-                    font_size=["1rem", "1rem",
+                    font_size=["1rem", "1.25rem",
                                "1.25rem", "1.5rem", "1.5rem"],
                     font_weight="900",
                     style=style.get("title")
@@ -439,7 +439,7 @@ def contact_block_desktop():
             rx.vstack(
                 rx.heading(
                     page_configuration["contact"],
-                    font_size=["1rem", "1rem",
+                    font_size=["1rem", "1.25rem",
                                "1.25rem", "1.5rem", "1.5rem"],
                     font_weight="900",
                     style=style.get("title")
@@ -501,6 +501,47 @@ def contact_block_mobile():
     )
 
 
+def publication_desktop():
+    return rx.vstack(
+        rx.vstack(
+            rx.heading(
+                page_configuration["publications"],
+                font_size=["1rem", "1.25rem",
+                           "1.25rem", "1.5rem", "1.5rem"],
+                font_weight="900",
+                style=style.get("title"),
+                transition="all 300ms ease"
+            ),
+            rx.heading(configuration["publication"]["title"]),
+            rx.text(
+                rx.text.strong("Abstract: "),
+                configuration["publication"]["abstract"],
+                font_size=["0.75rem", "1rem",
+                           "1rem", "1rem", "1rem"],
+                transition="all 300ms ease"
+            ),
+            rx.button(
+                "Go to the article",
+                variant="surface",
+                size='3',
+                radius="large",
+                on_click=rx.redirect(
+                    "https://doi.ieeecomputersociety.org/10.1109/SITIS61268.2023.00017",
+                    external=True,
+                ),
+            ),
+            spacing="5",
+            align="center"
+        ),
+        justify="center",
+        align="center",
+        margin_top="13rem",
+        id="publications",
+        width=["90%", "90%", "80%", "70%", "70%"],
+        max_width="800px"
+    )
+
+
 def render_page():
     return rx.vstack(
         landing_block(),
@@ -513,6 +554,7 @@ def render_page():
         about_me_block_mobile(),
         projects_block_desktop(),
         projects_block_mobile(),
+        publication_desktop(),
         contact_block_desktop(),
         contact_block_mobile(),
         style=style.get("content")

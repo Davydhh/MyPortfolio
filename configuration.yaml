@@ -34,6 +34,7 @@ content_page:
   hello: "Hi - I'm Davide"
   projects: "PROJECTS"
   projects_introduction: "An iOS app and an Android app 📱"
+  publications: "PUBLICATIONS"
   contact: "CONTACT"
   contact_description: "Hit me up! 👇"
 
@@ -68,18 +69,7 @@ header:
       href: "/contact"
   title: "Davide.dev"
 
-about_page:
-  my_story: |
-    Hello, my name is Davide and I was born in Italy in 1998. Since I was a child I have always been passionate about technology, a passion so strong that it drove me to complete a 5-year university degree and then turn my passion into a job. 
-    I love learning new things to improve my skills. 
-
-    For me, Informatics means creativity and limitlessness, you can create anything, the only limit is our mind.
-  experience:
-    - title: "Software Engineer"
-      company: "Robert Bosch S.p.a."
-      description: |
-        I am a dedicated Backend Developer with experience in Java, Python, Microservices, and Cloud Computing.
-  education:
-    - title: "Bachelor degree"
-      institution: ""
-      grade: 100
+publication:
+  title: "Advanced IoT Edge Architecture for Smart City"
+  link: "https://youtu.be/pNddCViY9oI?si=uyznrarIsA_7Zcmj"
+  abstract: "In the last few years, terms like Internet of Things, Cloud Computing and Edge Computing have captured a lot of attention from both scientific and industrial perspectives. They are independent but closely related concepts, and their use extends into several scenarios, such as Smart Agriculture, Smart Home, autonomous vehicles, and Smart City, to name but a few. Among the Smart City solutions, Smart Parking aims to solve the problem of parking space and parking management in big cities, since the search for free parking spaces brings along a serious cost, air pollution and stress issues. The objective of this article is to propose an Edge Computing architecture tailored for Smart Parking solutions, addressing the challenges of real-time data processing and efficient parking management. This architecture integrates a Deep Learning solution based on Gated Recurrent Units (GRU) to accurately forecast the number of available and occupied parking spaces."
