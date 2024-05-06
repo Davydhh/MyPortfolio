@@ -16,7 +16,7 @@ location_contact = configuration["contact_block"][0]
 mail_contact = configuration["contact_block"][1]
 
 images_paths: list = ["/java.png", "/python.png",
-                      "/spring-boot.png", "/postgresql.png", "/mongodb.png"]
+                      "/spring-boot.png", "/postgresql.png", "/mongodb.png", "/docker.png"]
 
 
 def about_me_block_mobile():
@@ -63,7 +63,7 @@ def about_me_block_desktop():
         rx.hstack(
             rx.image(
                 src="/pc_desk.jpg",
-                width=["200px", "250px", "300px", "330px", "350px"],
+                width=["200px", "250px", "350px", "380px", "380px"],
                 height="auto",
                 box_shadow="xl",
                 border_radius="15px 15px",
@@ -86,20 +86,20 @@ def about_me_block_desktop():
                     ),
                     rx.text(
                         page_configuration["medium_description"],
-                        font_size=["0.75rem", "0.75rem",
+                        font_size=["0.75rem", "1rem",
                                    "1rem", "1rem", "1rem"],
                     ),
                     justify_content="left",
                     align_items="start"
                 ),
-                max_width="350px"
+                max_width="400px"
             ),
             margin_top="13rem",
             spacing="6",
             padding=["0 1.5rem"],
             wrap="wrap",
             transition="all 300ms ease",
-            justify="center",
+            justify="center"
         ),
         id="about"
     )
@@ -113,8 +113,15 @@ def tech_stack_mobile():
                 size="5"
             ),
             rx.hstack(
-                *[create_stach_image_mobile(path) for path in images_paths],
-                spacing='6',
+                *[create_stach_image_mobile(images_paths[i])
+                  for i in range(3)],
+                spacing='8',
+                width="100%"
+            ),
+            rx.hstack(
+                *[create_stach_image_mobile(images_paths[i])
+                  for i in range(3, 6)],
+                spacing='8',
                 width="100%"
             ),
             spacing="6",
@@ -224,10 +231,10 @@ def projects_block_desktop():
                 ),
                 rx.heading(
                     page_configuration["projects_introduction"],
-                    font_size=["0.75rem", "0.75rem",
-                               "1rem", "1.25rem", "1.25rem"]
+                    font_size=["1rem", "1rem",
+                               "1.25rem", "1.25rem", "1.25rem"]
                 ),
-                spacing="5",
+                spacing="7",
                 align="start",
                 justify="start"
             ),
@@ -240,10 +247,16 @@ def projects_block_desktop():
                 align="center",
                 justify="center"
             ),
+            rx.blockquote(
+                "A project regarding blockchain and one regarding electric mobility are under development",
+                size='4',
+                margin_top="5rem",
+            ),
             margin_top="13rem",
             padding=["0 1.5rem"],
             spacing="7",
-            align="start"
+            align="start",
+            justify="center"
         ),
         id="projects"
     )
@@ -255,14 +268,20 @@ def project_block_desktop(title: str, description: str, stack: list, github_link
             project_image_desktop(image_path),
             project_description_desktop(
                 title, description, stack, github_link, demo_link, period),
-            spacing="9"
+            spacing="9",
+            wrap="wrap",
+            align="center",
+            justify="center"
         )
     else:
         return rx.hstack(
             project_description_desktop(
                 title, description, stack, github_link, demo_link, period),
             project_image_desktop(image_path),
-            spacing="9"
+            spacing="9",
+            wrap="wrap",
+            align="center",
+            justify="center"
         )
 
 
@@ -292,10 +311,18 @@ def projects_block_mobile():
                 spacing="9",
                 justify="center"
             ),
+            rx.text("."),
+            rx.text("."),
+            rx.text("."),
+            rx.blockquote(
+                "A project regarding blockchain and one regarding electric mobility are under development",
+                size='4'
+            ),
             margin_top="11rem",
             padding=["0 1.5rem"],
             spacing="7",
-            align="stretch"
+            align="center",
+            justify="center"
         ),
         id="projects_mobile"
     )

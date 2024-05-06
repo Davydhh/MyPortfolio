@@ -28,7 +28,7 @@ content_page:
     - Microservices Developer
     - Java Developer
   short_description: "A dedicated Backend Developer based in Milan, Italy 📍"
-  medium_description: "I'm a Software Engineer experienced in Java, Python, Microservices, and Cloud Computing. Skilled in building secure and scalable applications. Adaptable team player with strong communication, working well in Agile and Waterfall environments."
+  medium_description: "I'm a Backend Software Engineer at Intesa Sanpaolo experienced in Java, Python, Microservices, and Cloud Computing. I love making side projects and exploring the latest cutting-edge technologies. For instance, I've recently delved into LLM, investigating its potential optimizations through methods like RAG and RAFT."
   about_me: "ABOUT ME"
   tech_stack: "Tech Stack"
   hello: "Hi - I'm Davide"
