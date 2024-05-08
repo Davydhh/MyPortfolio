@@ -234,7 +234,7 @@ def projects_block_desktop():
                     font_size=["1rem", "1rem",
                                "1.25rem", "1.25rem", "1.25rem"]
                 ),
-                spacing="7",
+                spacing="5",
                 align="start",
                 justify="start"
             ),
@@ -250,7 +250,7 @@ def projects_block_desktop():
             rx.blockquote(
                 "A project regarding blockchain and one regarding electric mobility are under development",
                 size='4',
-                margin_top="5rem",
+                margin_top="6rem",
             ),
             margin_top="13rem",
             padding=["0 1.5rem"],
@@ -502,43 +502,88 @@ def contact_block_mobile():
 
 
 def publication_desktop():
-    return rx.vstack(
+    return rx.tablet_and_desktop(
+        rx.vstack(
+            rx.vstack(
+                rx.heading(
+                    page_configuration["publications"],
+                    font_size=["1rem", "1.25rem",
+                               "1.25rem", "1.5rem", "1.5rem"],
+                    font_weight="900",
+                    style=style.get("title"),
+                    transition="all 300ms ease"
+                ),
+                rx.heading(
+                    configuration["publication"]["title"],
+                    font_size=["1rem", "1.25rem",
+                               "1.5rem", "1.5rem", "1.5rem"]
+                ),
+                rx.text(
+                    rx.text.strong("Abstract: "),
+                    configuration["publication"]["abstract"],
+                    font_size=["0.75rem", "1rem",
+                               "1rem", "1rem", "1rem"],
+                    transition="all 300ms ease",
+                    text_align="justify",
+                    width=["90%", "90%", "80%", "70%", "70%"],
+                    max_width="800px"
+                ),
+                rx.link(
+                    rx.button(
+                        "Go to the paper",
+                        variant="surface",
+                        size='3',
+                        radius="large",
+                    ),
+                    href="https://doi.ieeecomputersociety.org/10.1109/SITIS61268.2023.00017"
+                ),
+                spacing="5",
+                align="center",
+                justify="center"
+            ),
+            justify="center",
+            align="center",
+            margin_top="13rem",
+            id="publications"
+        )
+    )
+
+
+def publication_mobile():
+    return rx.mobile_only(
         rx.vstack(
             rx.heading(
                 page_configuration["publications"],
-                font_size=["1rem", "1.25rem",
-                           "1.25rem", "1.5rem", "1.5rem"],
+                size="5",
                 font_weight="900",
-                style=style.get("title"),
-                transition="all 300ms ease"
+                style=style.get("title")
             ),
-            rx.heading(configuration["publication"]["title"]),
+            rx.heading(
+                configuration["publication"]["title"],
+                text_align="center"
+            ),
             rx.text(
                 rx.text.strong("Abstract: "),
                 configuration["publication"]["abstract"],
-                font_size=["0.75rem", "1rem",
-                           "1rem", "1rem", "1rem"],
-                transition="all 300ms ease"
-            ),
-            rx.button(
-                "Go to the article",
-                variant="surface",
                 size='3',
-                radius="large",
-                on_click=rx.redirect(
-                    "https://doi.ieeecomputersociety.org/10.1109/SITIS61268.2023.00017",
-                    external=True,
-                ),
+                text_align="justify"
             ),
+            rx.link(
+                rx.button(
+                    "Go to the paper",
+                    variant="surface",
+                    size='3',
+                    radius="large",
+                    width="100%"
+                ),
+                href="https://doi.ieeecomputersociety.org/10.1109/SITIS61268.2023.00017"
+            ),
+            margin_top="13rem",
+            padding=["0 1.5rem"],
             spacing="5",
-            align="center"
-        ),
-        justify="center",
-        align="center",
-        margin_top="13rem",
-        id="publications",
-        width=["90%", "90%", "80%", "70%", "70%"],
-        max_width="800px"
+            align="center",
+            id="publications_mobile"
+        )
     )
 
 
@@ -555,6 +600,7 @@ def render_page():
         projects_block_desktop(),
         projects_block_mobile(),
         publication_desktop(),
+        publication_mobile(),
         contact_block_desktop(),
         contact_block_mobile(),
         style=style.get("content")
