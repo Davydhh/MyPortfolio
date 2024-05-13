@@ -150,12 +150,14 @@ def tech_stack_block():
             ),
             rx.hstack(
                 rx.foreach(images_paths, create_stach_image),
-                spacing="8"
+                spacing="8",
+                justify="center",
+                align="center"
             ),
             spacing="5",
             margin_top="10rem",
             padding=["0 1.5rem"],
-            aling="center",
+            align="center",
             justify="center",
             wrap="wrap"
         )
@@ -234,23 +236,21 @@ def projects_block_desktop():
                     font_size=["1rem", "1rem",
                                "1.25rem", "1.25rem", "1.25rem"]
                 ),
+                rx.text(
+                    "(And others under development...)",
+                    color="gray",
+                    size="1"
+                ),
                 spacing="5",
                 align="start",
                 justify="start"
             ),
             rx.vstack(
-                project_block_desktop(workout_project["name"], workout_project["description"], workout_project["technologies"],
-                                      workout_project["github"], workout_project["live_demo"], workout_project["image_path"], workout_project["period"]),
-                project_block_desktop(covid_project["name"], covid_project["description"], covid_project["technologies"],
-                                      covid_project["github"], covid_project["live_demo"], covid_project["image_path"], covid_project["period"], image_left=False),
+                *[project_block_desktop(project["name"], project["description"], project["technologies"],
+                                        project["github"], project["live_demo"], project["image_path"], project["period"], image_left=project["image_left"]) for project in configuration["projects"]],
                 spacing="9",
                 align="center",
                 justify="center"
-            ),
-            rx.blockquote(
-                "A project regarding blockchain and one regarding electric mobility are under development",
-                size='4',
-                margin_top="6rem",
             ),
             margin_top="13rem",
             padding=["0 1.5rem"],
@@ -269,7 +269,6 @@ def project_block_desktop(title: str, description: str, stack: list, github_link
             project_description_desktop(
                 title, description, stack, github_link, demo_link, period),
             spacing="9",
-            wrap="wrap",
             align="center",
             justify="center"
         )
@@ -279,7 +278,6 @@ def project_block_desktop(title: str, description: str, stack: list, github_link
                 title, description, stack, github_link, demo_link, period),
             project_image_desktop(image_path),
             spacing="9",
-            wrap="wrap",
             align="center",
             justify="center"
         )
@@ -297,26 +295,23 @@ def projects_block_mobile():
                 ),
                 rx.heading(
                     page_configuration["projects_introduction"],
-                    size="5"
+                    size="5",
+                    text_align="justify"
+                ),
+                rx.text(
+                    "(And others under development...)",
+                    color="gray",
+                    size="1"
                 ),
                 spacing="3",
-                align="start",
+                align="center",
                 justify="start"
             ),
             rx.vstack(
-                project_block_mobile(workout_project["name"], workout_project["description"], workout_project["technologies"],
-                                     workout_project["github"], workout_project["live_demo"], workout_project["image_path"]),
-                project_block_mobile(covid_project["name"], covid_project["description"], covid_project["technologies"],
-                                     covid_project["github"], covid_project["live_demo"], covid_project["image_path"]),
+                *[project_block_mobile(project["name"], project["description"], project["technologies"],
+                                       project["github"], project["live_demo"], project["image_path"], project["period"]) for project in configuration["projects"]],
                 spacing="9",
                 justify="center"
-            ),
-            rx.text("."),
-            rx.text("."),
-            rx.text("."),
-            rx.blockquote(
-                "A project regarding blockchain and one regarding electric mobility are under development",
-                size='4'
             ),
             margin_top="11rem",
             padding=["0 1.5rem"],
@@ -328,47 +323,62 @@ def projects_block_mobile():
     )
 
 
-def project_block_mobile(title: str, description: str, stack: list, github_link: str, demo_link: str, image_path: str):
+def project_block_mobile(title: str, description: str, stack: list, github_link: str, demo_link: str, image_path: str, period: str):
     return rx.vstack(
         rx.heading(
             title,
             size="3"
         ),
+        rx.heading(
+            period,
+            size="2",
+            color="gray"
+        ),
         project_image_mobile(image_path),
         rx.text(
             description,
             size="3",
-            text_align="justify"
+            text_align="justify",
+            white_space="pre-wrap"
         ),
         rx.hstack(
             rx.foreach(stack, create_xs_heading),
-            spacing="2"
+            spacing="4"
         ),
-        rx.hstack(
-            rx.link(
-                rx.image(
-                    src="/github.png",
-                    width="20px",
-                    filter="brightness(0) invert(1)"
+        rx.cond(
+            github_link != "" or demo_link != "",
+            rx.hstack(
+                rx.cond(
+                    github_link != "",
+                    rx.link(
+                        rx.image(
+                            src="/github.png",
+                            width="24px",
+                            filter="brightness(0) invert(1)"
+                        ),
+                        href=github_link
+                    )
                 ),
-                href=github_link
-            ),
-            rx.link(
-                rx.button(
-                    "Live Demo",
-                    rx.icon(
-                        tag="external_link",
-                        width="16px"
-                    ),
-                    color="white",
-                    variant="ghost"
+                rx.cond(
+                    demo_link != "",
+                    rx.link(
+                        rx.button(
+                            "Live Demo",
+                            rx.icon(
+                                tag="external_link",
+                                width="20px"
+                            ),
+                            color="white",
+                            variant="ghost"
+                        ),
+                        href=demo_link
+                    )
                 ),
-                href=demo_link
-            ),
-            spacing="3"
+                spacing="3"
+            )
         ),
         max_width="90vw",
-        spacing="4",
+        spacing="5",
         align="center"
     )
 
@@ -391,40 +401,50 @@ def project_description_desktop(title: str, description: str, stack: list, githu
         rx.text(
             description,
             size="3",
-            text_align="center"
+            text_align="center",
+            white_space="pre-wrap"
         ),
         rx.hstack(
             *[create_xs_heading(s) for s in stack],
             spacing="4"
         ),
-        rx.hstack(
-            rx.link(
-                rx.image(
-                    src="/github.png",
-                    width=["20px", "22px",
-                           "24px", "24px", "24px"],
-                    filter="brightness(0) invert(1)",
-                    transition="all 300ms ease"
+        rx.cond(
+            github_link != '' or demo_link != '',
+            rx.hstack(
+                rx.cond(
+                    github_link != '',
+                    rx.link(
+                        rx.image(
+                            src="/github.png",
+                            width=["20px", "22px",
+                                   "24px", "24px", "24px"],
+                            filter="brightness(0) invert(1)",
+                            transition="all 300ms ease"
+                        ),
+                        href=github_link
+                    )
                 ),
-                href=github_link
-            ),
-            rx.link(
-                rx.button(
-                    "Live Demo",
-                    rx.icon(
-                        tag="external_link",
-                        padding_left="0.5rem",
-                        width=["20px", "22px",
-                               "24px", "24px", "24px"],
-                        transition="all 300ms ease"
-                    ),
-                    _dark={"color": "white"},
-                    _light={"color": "black"},
-                    variant="ghost"
+                rx.cond(
+                    demo_link != '',
+                    rx.link(
+                        rx.button(
+                            "Live Demo",
+                            rx.icon(
+                                tag="external_link",
+                                padding_left="0.5rem",
+                                width=["20px", "22px",
+                                       "24px", "24px", "24px"],
+                                transition="all 300ms ease"
+                            ),
+                            _dark={"color": "white"},
+                            _light={"color": "black"},
+                            variant="ghost"
+                        ),
+                        href=demo_link
+                    )
                 ),
-                href=demo_link
-            ),
-            spacing="4"
+                spacing="4"
+            )
         ),
         max_width="400px",
         spacing="5",
