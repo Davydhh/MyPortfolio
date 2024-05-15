@@ -16,7 +16,7 @@ def render_header():
                 create_header_button("Home", "/"),
                 create_header_button("About", "#about"),
                 create_header_button("Projects", "#projects"),
-                create_header_button("Publications", "#Publications"),
+                create_header_button("Publications", "#publications"),
                 create_header_button("Contact", "#contact"),
                 spacing="5"
             )
@@ -35,7 +35,7 @@ def render_header():
                     create_menu_item("Home", "/"),
                     create_menu_item("About", "#about_mobile"),
                     create_menu_item("Projects", "#projects_mobile"),
-                    create_menu_item("Publications", "#Publications_mobile"),
+                    create_menu_item("Publications", "#publications_mobile"),
                     create_menu_item("Contact", "#contact_mobile"),
                     style=style.get("app")
                 ),
