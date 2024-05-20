@@ -2,7 +2,7 @@ projects:
   - name: "ITAL GUARD ⛓️"
     period: "May 2024"
     description: |
-      Project that seamlessly integrated blockchain technology, NFTs, and Spring Boot framework.\nDetails cannot yet be released.
+      Project that seamlessly integrated blockchain technology, NFTs, and Spring Boot framework.\nDetails cannot be released.
     technologies:
       - Blockchain
       - NFT
@@ -28,7 +28,7 @@ projects:
   - name: "WORKOUT TRACKER 🏋🏻"
     period: "July 2022"
     description: |
-      WorkoutTracker is a Fitness App that uses Augmented Reality and Computer Vision to track repetitions of exercises for you. It also memorizes the order of exercises and provides reminders for the next exercise.
+      WorkoutTracker is a Fitness App that uses Augmented Reality, Computer Vision and Machine Learning to track repetitions of exercises for you. It also memorizes the order of exercises and provides reminders for the next exercise.
     technologies:
       - iOS
       - Swift
